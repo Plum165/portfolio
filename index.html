@@ -308,6 +308,20 @@ Purpose: Built to practice calculating safe states and reinforce system safety c
           </div>
         </div>
       </section>
+      <section id="sports" class="mb-10 mt-10">
+  <h2 class="text-xl font-bold mb-4">🏀 Sports Achievements</h2>
+  <div class="mb-4">
+    <label for="sportSelect" class="text-white">Choose a sport:</label>
+    <select id="sportSelect" class="ml-2 bg-gray-800 text-white px-2 py-1 rounded">
+      <option value="">-- Select --</option>
+      <option value="Basketball">Basketball</option>
+      <option value="Soccer">Soccer</option>
+      <!-- Add more sports if needed -->
+    </select>
+  </div>
+  <div id="sportsOutput" class="text-white space-y-4"></div>
+</section>
+
     </main>
 
     <!-- Footer -->
@@ -322,5 +336,47 @@ Purpose: Built to practice calculating safe states and reinforce system safety c
         document.getElementById("year").textContent = new Date().getFullYear();
       </script>
     </footer>
+    <!-- SheetJS library (to read Excel files in browser) -->
+<script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+
+<script>
+  const sportSelect = document.getElementById("sportSelect");
+  const output = document.getElementById("sportsOutput");
+
+  sportSelect.addEventListener("change", function () {
+    const selectedSport = this.value;
+    if (!selectedSport) return (output.innerHTML = "");
+
+    fetch("Sports_I_Did.xlsx")
+      .then((res) => res.arrayBuffer())
+      .then((data) => {
+        const workbook = XLSX.read(data, { type: "array" });
+        const sheet = workbook.Sheets[workbook.SheetNames[0]];
+        const jsonData = XLSX.utils.sheet_to_json(sheet);
+
+        const filtered = jsonData.filter((entry) => entry.Sport === selectedSport);
+        if (filtered.length === 0) {
+          output.innerHTML = `<p>No data found for ${selectedSport}</p>`;
+          return;
+        }
+
+        output.innerHTML = filtered
+          .map(
+            (entry) => `
+              <div class="p-4 bg-black rounded-lg shadow">
+                <h3 class="text-lg font-semibold text-purple-600">${entry.Achievement} (${entry.Year})</h3>
+                <p class="text-white">${entry.Description}</p>
+              </div>
+            `
+          )
+          .join("");
+      })
+      .catch((err) => {
+        output.innerHTML = `<p class="text-red-400">Failed to load Excel file. Make sure it's in the same folder as this HTML file.</p>`;
+        console.error(err);
+      });
+  });
+</script>
+
   </body>
 </html>
