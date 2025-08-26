@@ -1,577 +1,887 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moegamat Samsodien | Portfolio</title>
-    <!-- Tailwind CSS via CDN for quick styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="bg-gray-900 text-purple-600">
-<!-- Navigation Bar -->
-<nav class="bg-gray-900 sticky top-0 z-50 shadow-md">
-  <div class="max-w-5xl mx-auto px-4 py-3 w-full flex justify-center">
-    <ul class="flex space-x-10 text-white text-lg font-semibold tracking-wider">
-      <li><a href="#about" class="hover:text-purple-400 transition">About</a></li>
-      <li><a href="#projects" class="hover:text-purple-400 transition">Projects</a></li>
-      <li><a href="#sports" class="hover:text-purple-400 transition">Sports</a></li>
+<html lang="en" data-theme="purple">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moegamat Samsodien | Portfolio</title>
+
+  <!-- Favicon -->
+<link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+<link rel="manifest" href="favicon_io/site.webmanifest">
+<link rel="mask-icon" href="favicon_io/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* Themes */
+    [data-theme="purple"] body {
+      background: linear-gradient(to bottom right, #0a0014, #1a0033, #2d004d);
+      color: #eee;
+    }
+    [data-theme="green"] body {
+      background: linear-gradient(to bottom right, #002d18, #004d26, #007f3f);
+      color: #d9ffd9;
+    }
+    [data-theme="blue"] body {
+      background: linear-gradient(to bottom right, #001a33, #003366, #005580);
+      color: #d9f0ff;
+    }
+    [data-theme="yellowblue"] body {
+    background: linear-gradient(to bottom right, #ffd93b, #3b82f6, #1e3a8a);
+    color: #fffbea;
+    }
+    [data-theme="bloodred"] body {
+    background: linear-gradient(to bottom right, #2a0000, #660000, #b30000);
+    color: #ffeaea;
+    }
+    [data-theme="blueyelloworange"] body {
+     background: linear-gradient(to bottom right, #1e3a8a, #facc15, #f97316);
+     color: #fffdf5;
+    }
+
+
+
+
+    /* Project card base */
+    .project-card {
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, background 0.3s ease;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .project-card:hover {
+      transform: scale(1.06);
+    }
+    .project-desc {
+      margin: 0.5rem 0;
+      font-size: 0.875rem;
+    }
+
+    /* Contributor link at top */
+    .project-link {
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    /* Contributors */
+    .contributors {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 0.75rem;
+      font-weight: bold;
+      margin-top: 0.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      border: none;
+      color: white;
+      font-size: 0.9rem;
+    }
+    .btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+    }
+
+    /* Horizontal scroll categories */
+    .category-bar {
+      display: flex;
+      overflow-x: auto;
+      gap: 0.5rem;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+    .category-btn {
+      flex: 0 0 auto;
+      padding: 0.5rem 1rem;
+      border-radius: 0.75rem;
+      font-weight: bold;
+      cursor: pointer;
+      white-space: nowrap;
+      border: none;
+      color: white;
+      font-size: 0.9rem;
+      box-shadow: 0 3px 5px rgba(0,0,0,0.4);
+      transition: all 0.2s ease;
+    }
+    .category-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    /* Category description */
+    #category-desc {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body class="font-sans">
+
+  <!-- Header -->
+  <header class="text-center py-10">
+    <h1 class="text-4xl md:text-6xl font-extrabold drop-shadow-lg">Moegamat Samsodien</h1>
+    <p class="mt-4 text-lg md:text-xl">Third-Year Computer Science Student | Full-Stack & AI Developer | Problem-Solver</p>
+    <button id="theme-toggle" class="mt-6 px-4 py-2 rounded-xl btn">Switch Theme</button>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-10 space-y-16">
+
+    <!-- About -->
+    <section id="about" data-aos="fade-up">
+      <h2 class="section-title">About Me</h2>
+      <p>
+       I’m a third-year Computer Science student at the University of Cape Town and a proud Moshal Scholar. I’m passionate about solving real-world problems through technology—whether that’s building inclusive FinTech solutions, designing AI-powered healthcare systems, or creating personalized recommendation engines. I have hands-on experience in full-stack development, machine learning, UI/UX design, and systems programming, with projects ranging from offline-first payment apps and AI triage chatbots to course-focused simulations and hackathon prototypes.
+
+Beyond academics, I lead with purpose: tutoring peers in complex computing concepts, captaining sports teams, and volunteering to create meaningful impact in my community. I thrive at the intersection of learning, building, and giving back, always seeking opportunities to innovate, collaborate, and turn ideas into tangible solutions.
+      </p>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="category-bar">
+      <button class="category-btn" data-filter="all">All</button>
+      <button class="category-btn" data-filter="hackathon">Hackathon</button>
+      <button class="category-btn" data-filter="coursework">Coursework</button>
+      <button class="category-btn" data-filter="side">Side Projects</button>
+      <button class="category-btn" data-filter="academic">Academic Helpers</button>
+    </section>
+    <div id="category-desc"></div>
+
+    <!-- Projects -->
+    <section id="projects" data-aos="fade-up">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        
+<!-- Hackathon Project: USSD + Interledger -->
+<div class="project-card bg-gradient-to-br from-purple-600 via-indigo-700 to-pink-700 p-6" data-category="hackathon">
+  <!-- Status / Tag -->
+  <span class="inline-block bg-yellow-400 text-purple-900 font-bold text-xs px-2 py-1 rounded-full mb-2 uppercase">🏆 2nd Place - FinTech Hackathon</span>
+
+  <!-- Contributor Link -->
+  <a href="https://linkedin.com/in/moegamatsamsodien" class="project-link text-yellow-300 text-sm font-semibold mb-2">Lead: Moegamat Samsodien</a>
+
+  <!-- Project Title -->
+  <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">USSD + Interledger Payment App</h3>
+
+  <!-- Project Description -->
+  <p class="project-desc mb-3">
+    Offline-first payment solution enabling mobile users to:
+    <ul class="list-disc ml-5 mt-2">
+      <li>Send and receive cross-border payments without internet.</li>
+      <li>Use USSD codes for secure transaction interactions.</li>
+      <li>Integrate seamlessly with Africa’s Talking and Open Payments API.</li>
     </ul>
-  </div>
-</nav>
+  </p>
 
-    <!-- Header / Hero -->
-    <header class="bg-gray-800 shadow">
-      <div class="max-w-5xl mx-auto px-4 py-6 flex items-center">
+  <!-- Tools / Badges -->
+  <p class="mb-3"><b>Tech Stack:</b></p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">USSD</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Node.js</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Express</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Interledger API</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Africa’s Talking</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">JavaScript</span>
+  </div>
+
+  <!-- Contributors -->
+  <p class="mb-2 font-semibold">Team Contributors:</p>
+  <ul class="list-disc ml-5 mb-4">
+    <li><a href="https://www.linkedin.com/in/moegamatsamsodien" target="_blank" class="underline">Moegamat Samsodien</a></li>
+    <li><a href="https://www.linkedin.com/in/ACoAADnntV4Bu4s9XL59yet_ghTXc0gIJKTWYg4" target="_blank" class="underline">Sakeenah Majiet</a></li>
+    <li><a href="https://www.linkedin.com/in/ACoAAEDuoWQBcswkg52H4swWa25VI2PhzCwnGrU" target="_blank" class="underline">Amukelani Rikhotso</a></li>
+    <li><a href="https://www.linkedin.com/in/ACoAADT8U7YBeUA3iE9Gs7QI6G7H5NQfi1DiudY" target="_blank" class="underline">Raibim Alam</a></li>
+    <li><a href="https://www.linkedin.com/in/ACoAAFnr23UB48-o4BWkMNPH632oUpalqVTN1uQ" target="_blank" class="underline">Lateef Ahmed</a></li>
+  </ul>
+
+  <!-- GitHub Button -->
+  <a href="https://github.com/Plum165/FinTechHackthon" class="btn github-btn mt-2 w-full text-center">View on GitHub</a>
+</div>
+
+<!-- Hackathon-Inspired Project: Triage AI — AI-Powered Patient Triage System -->
+<div class="project-card bg-gradient-to-br from-purple-600 via-indigo-700 to-pink-700 p-6" data-category="side">
+  <!-- Status / Tag -->
+  <span class="inline-block bg-red-400 text-purple-900 font-bold text-xs px-2 py-1 rounded-full mb-2 uppercase">💡 AI-Powered Healthcare</span>
+
+  <!-- Team -->
+  <span class="project-link text-yellow-300 text-sm font-semibold mb-2">Solo Project</span>
+
+  <!-- Project Title -->
+  <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">Triage AI — AI-Powered Patient Triage System</h3>
+
+  <!-- Project Description -->
+  <p class="project-desc mb-3">
+    Building on insights from the Innovate4Health Hackathon, Triage AI is an AI-powered chatbot that:
+    <ul class="list-disc ml-5 mt-2">
+      <li>Interacts with patients to gather symptoms.</li>
+      <li>Assigns triage urgency levels: Critical, Urgent, Non-Urgent, Mild.</li>
+      <li>Displays results on a doctor dashboard for faster decision-making.</li>
+      <li>Integrates AI via the Groq API and allows doctors to reply, remove cases, and download summaries as PDFs.</li>
+    </ul>
+  </p>
+
+  <!-- Tools / Badges -->
+  <p class="mb-3"><b>Tech Stack:</b></p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Groq API</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">JavaScript</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Node.js</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">React</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Tailwind CSS</span>
+  </div>
+
+  <!-- Contributors -->
+  <p class="mb-2 font-semibold">Contributor:</p>
+  <ul class="list-disc ml-5 mb-4">
+    <li><span>Moegamat Samsodien</span></li>
+  </ul>
+
+  <!-- GitHub Button -->
+  <a href="https://github.com/Plum165/triage-ai-web" class="btn github-btn mt-2 w-full text-center">View on GitHub</a>
+</div>
+
+
+<!-- Hackathon Project: FNB DataQuest -->
+<div class="project-card bg-gradient-to-br from-purple-600 via-indigo-700 to-pink-700 p-6" data-category="hackathon">
+  <!-- Status / Tag -->
+  <span class="inline-block bg-yellow-400 text-purple-900 font-bold text-xs px-2 py-1 rounded-full mb-2 uppercase">🏆 Hackathon</span>
+
+  <!-- Contributor Link -->
+  <a href="https://linkedin.com/in/moegamatsamsodien" class="project-link text-yellow-300 text-sm font-semibold mb-2">Solo Project</a>
+
+  <!-- Project Title -->
+  <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">FNB DataQuest: Product Recommendation System</h3>
+
+  <!-- Project Description -->
+  <p class="project-desc mb-3">
+    Built a product recommendation system for FNB DataQuest hackathon:
+    <ul class="list-disc ml-5 mt-2">
+      <li>Analyzed 400K+ e-commerce transactions to predict customer purchases.</li>
+      <li>Engineered features and evaluated models for accuracy and relevance.</li>
+      <li>Implemented using LightGBM for scalable performance.</li>
+    </ul>
+  </p>
+
+  <!-- Tools / Badges -->
+  <p class="mb-3"><b>Tech Stack:</b></p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Python</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">LightGBM</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Pandas</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Scikit-learn</span>
+  </div>
+
+  <!-- GitHub Button -->
+  <a href="https://github.com/Plum165/RecSystems2025" class="btn github-btn mt-2 w-full text-center">View on GitHub</a>
+</div>
+
+
+ <!-- Hackathon Project: TasteLoop App -->
+<div class="project-card bg-gradient-to-br from-purple-600 via-indigo-700 to-pink-700 p-6" data-category="hackathon">
+  <!-- Status / Tag -->
+  <span class="inline-block bg-yellow-400 text-purple-900 font-bold text-xs px-2 py-1 rounded-full mb-2 uppercase">🏆 Hackathon</span>
+
+  <!-- Contributor Link -->
+  <a href="https://linkedin.com/in/moegamatsamsodien" class="project-link text-yellow-300 text-sm font-semibold mb-2">Solo Project</a>
+
+  <!-- Project Title -->
+  <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">TasteLoop App</h3>
+
+  <!-- Project Description -->
+  <p class="project-desc mb-3">
+    TasteLoop is a hackathon-built proof-of-concept that helps users discover movies, TV shows, anime, and video games they’ll love powered entirely by natural language input. Built for United Hacks V5 under the Entertainment theme, the project:
+    <ul class="list-disc ml-5 mt-2">
+      <li>Uses OpenAI to interpret user preferences.</li>
+      <li>Pulls live content from TMDB and RAWG APIs.</li>
+      <li>Delivers instant, relevant, cross-media recommendations.</li>
+    </ul>
+  </p>
+
+  <!-- Tools / Badges -->
+  <p class="mb-3"><b>Tech Stack:</b></p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">React</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Node.js</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Express.js</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">OpenAI API</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">TMDB API</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">RAWG API</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Tailwind CSS</span>
+  </div>
+
+  <!-- GitHub Button -->
+  <a href="https://github.com/Plum165/UnitedHacksV5" class="btn github-btn mt-2 w-full text-center">View on GitHub</a>
+</div>
+
+
+
+<!-- Coursework Project: Simplified Torrent-like File Sharing -->
+<div class="project-card bg-gradient-to-br from-purple-600 via-indigo-700 to-pink-700 p-6" data-category="coursework">
+  <!-- Status / Tag -->
+  <span class="inline-block bg-blue-400 text-purple-900 font-bold text-xs px-2 py-1 rounded-full mb-2 uppercase">📚 Coursework</span>
+
+  <!-- Contributor Link -->
+  <a href="https://linkedin.com/in/moegamatsamsodien" class="project-link text-yellow-300 text-sm font-semibold mb-2">Lead: Moegamat Samsodien</a>
+
+  <!-- Project Title -->
+  <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">Simplified Torrent-like File Sharing</h3>
+
+  <!-- Project Description -->
+  <p class="project-desc mb-3">
+    Python-based P2P file sharing simulation designed to teach networking principles:
+    <ul class="list-disc ml-5 mt-2">
+      <li>Includes a tracker for peer discovery and file matching.</li>
+      <li>Supports TCP and UDP transfer functionality.</li>
+      <li>Mimics torrent behavior for educational purposes.</li>
+    </ul>
+  </p>
+
+  <!-- Tools / Badges -->
+  <p class="mb-3"><b>Tech Stack:</b></p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Python</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">TCP/UDP Sockets</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Multithreading</span>
+  </div>
+
+  <!-- Contributors -->
+  <p class="mb-2 font-semibold">Team Contributors:</p>
+  <ul class="list-disc ml-5 mb-4">
+    <li><a href="https://www.linkedin.com/in/aneesah-barnes-724143237" target="_blank" class="underline">Aneesah Barnes</a></li>
+    <li><a href="https://www.linkedin.com/in/moegamatsamsodien/" target="_blank" class="underline">Marcus Buxmann</a></li>
+  </ul>
+
+  <!-- GitHub Button -->
+  <a href="https://github.com/Plum165/Simplified-torrent-like-file-sharing" class="btn github-btn mt-2 w-full text-center">View on GitHub</a>
+</div>
+
+<!-- Coursework Project: Chommies SQL Simulation – Java + MySQL -->
+<div class="project-card bg-gradient-to-br from-purple-600 via-indigo-700 to-pink-700 p-6" data-category="coursework">
+  <!-- Status / Tag -->
+  <span class="inline-block bg-blue-400 text-purple-900 font-bold text-xs px-2 py-1 rounded-full mb-2 uppercase">📚 Coursework</span>
+
+  <!-- Team -->
+  <span class="project-link text-yellow-300 text-sm font-semibold mb-2">Team</span>
+
+  <!-- Project Title -->
+  <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">Chommies SQL Simulation – Java + MySQL</h3>
+
+  <!-- Project Description -->
+  <p class="project-desc mb-3">
+    Java-based SQL simulation program connecting to MySQL for university administration tasks:
+    <ul class="list-disc ml-5 mt-2">
+      <li>Add course convenors and update lecture venues.</li>
+      <li>Deregister students and export student data.</li>
+    </ul>
+  </p>
+
+  <!-- Tools / Badges -->
+  <p class="mb-3"><b>Tech Stack:</b></p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Java</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">MySQL</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">JDBC</span>
+  </div>
+
+  <!-- Contributors -->
+  <p class="mb-2 font-semibold">Team Contributors:</p>
+  <ul class="list-disc ml-5 mb-4">
+    <li><a href="https://www.linkedin.com/in/aneesah-barnes-724143237" target="_blank" class="underline">Aneesah Barnes</a></li>
+    <li><a href="https://www.linkedin.com/in/shriya-inderpal-566255371/" target="_blank" class="underline">Shriya Inderpal</a></li>
+    <li><a href="#" class="underline">Casey Hunter</a></li>
+    <li><a href="https://www.linkedin.com/in/aria-jeewon-4586182b5/" target="_blank" class="underline">Aria Jeewon</a></li>
+  </ul>
+
+  <!-- GitHub Button -->
+  <a href="https://github.com/Plum165/database" class="btn github-btn mt-2 w-full text-center">View on GitHub</a>
+</div>
+<!-- Hackathon Project: Rural Hospital Triage App (Prototype) -->
+<div class="project-card bg-gradient-to-br from-purple-600 via-indigo-700 to-pink-700 p-6" data-category="hackathon">
+  <!-- Status / Tag -->
+  <span class="inline-block bg-yellow-400 text-purple-900 font-bold text-xs px-2 py-1 rounded-full mb-2 uppercase">🏆 Hackathon Prototype</span>
+
+  <!-- Team -->
+  <span class="project-link text-yellow-300 text-sm font-semibold mb-2">Team</span>
+
+  <!-- Project Title -->
+  <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">Rural Hospital Triage App</h3>
+
+  <!-- Project Description -->
+  <p class="project-desc mb-3">
+    Digital triage system designed for rural hospitals:
+    <ul class="list-disc ml-5 mt-2">
+      <li>Assesses patient urgency and notifies doctors in real-time.</li>
+      <li>Reduces doctor burnout and streamlines low-risk case management.</li>
+    </ul>
+  </p>
+
+  <!-- Tools / Badges -->
+  <p class="mb-3"><b>Tech Stack:</b></p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Figma</span>
+  </div>
+
+  <!-- Contributors -->
+  <p class="mb-2 font-semibold">Team Contributors:</p>
+  <ul class="list-disc ml-5 mb-4">
+    <li><a href="https://www.linkedin.com/in/bokang-ndaba-561286280" target="_blank" class="underline">Bokang Ndaba</a></li>
+    <li><a href="https://www.linkedin.com/in/ntuthuko-clement-motha-943915295" target="_blank" class="underline">Ntuthuko Clement Motha</a></li>
+    <li><a href="https://www.linkedin.com/in/ntokozo-vundla-5a3186237/" target="_blank" class="underline">Ntokozo Vundla</a></li>
+    <li><a href="https://www.linkedin.com/in/nyeleti-mushwana-212b93230/" target="_blank" class="underline">Nyeleti Mushwana</a></li>
+    <li><a href="https://www.linkedin.com/in/kamogelo-selabi-368737208/" target="_blank" class="underline">Kamogelo Selabi</a></li>
+    <li><a href="https://www.linkedin.com/in/moegamat-ridaa-botha-827783202/" target="_blank" class="underline">Ridaa Botha</a></li>
+  </ul>
+
+  <!-- GitHub Button -->
+  <a href="https://github.com/Plum165/Innovate4Health" class="btn github-btn mt-2 w-full text-center">View on GitHub</a>
+</div>
+
+<!-- Academic Project: Page Replacement Simulator -->
+<div class="project-card bg-gradient-to-br from-green-600 via-lime-500 to-emerald-600 p-6" data-category="academic">
+  <!-- Status / Tag -->
+  <span class="inline-block bg-lime-400 text-green-900 font-bold text-xs px-2 py-1 rounded-full mb-2 uppercase">📚 Academic Project</span>
+
+  <!-- Team -->
+  <span class="project-link text-lime-300 text-sm font-semibold mb-2">Solo Project</span>
+
+  <!-- Project Title -->
+  <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">Page Replacement Simulator</h3>
+
+  <!-- Project Description -->
+  <p class="project-desc mb-3">
+    Simulator for demonstrating and evaluating page replacement algorithms in Operating Systems coursework:
+    <ul class="list-disc ml-5 mt-2">
+      <li>Supports FIFO, LRU, Optimal, Clock, and Clock with Dirty Bit algorithms.</li>
+      <li>Visualizes page faults and memory management behavior for learning purposes.</li>
+      <li>Interactive interface for experimenting with different reference strings and frame counts.</li>
+    </ul>
+  </p>
+
+  <!-- Tools / Badges -->
+  <p class="mb-3"><b>Tech Stack:</b></p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-lime-200 text-green-900 px-2 py-1 rounded-full text-xs font-semibold">Java</span>
+    <span class="bg-lime-200 text-green-900 px-2 py-1 rounded-full text-xs font-semibold">Swing</span>
+    <span class="bg-lime-200 text-green-900 px-2 py-1 rounded-full text-xs font-semibold">Algorithms</span>
+  </div>
+
+  <!-- Contributors -->
+  <p class="mb-2 font-semibold">Contributor:</p>
+  <ul class="list-disc ml-5 mb-4">
+    <li><span>Moegamat Samsodien</span></li>
+  </ul>
+
+  <!-- GitHub Button -->
+  <a href="https://github.com/Plum165/page-replacement-simulator" class="btn github-btn mt-2 w-full text-center">View on GitHub</a>
+</div>
+
+<!-- Coursework Project: Banker's Algorithm Java Program -->
+<div class="project-card bg-gradient-to-br from-purple-600 via-indigo-700 to-pink-700 p-6" data-category="academic">
+  <!-- Status / Tag -->
+  <span class="inline-block bg-lime-400 text-purple-900 font-bold text-xs px-2 py-1 rounded-full mb-2 uppercase">Academic Project</span>
+
+  <!-- Contributor Link -->
+  <a href="https://linkedin.com/in/moegamatsamsodien" class="project-link text-yellow-300 text-sm font-semibold mb-2">Solo Project</a>
+
+  <!-- Project Title -->
+  <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">Banker's Algorithm Java Program</h3>
+
+  <!-- Project Description -->
+  <p class="project-desc mb-3">
+    Java-based learning tool implementing the Banker's Algorithm for deadlock avoidance in operating systems:
+    <ul class="list-disc ml-5 mt-2">
+      <li>Simulates resource allocation using Need, Allocation, and Available matrices.</li>
+      <li>Checks for safe sequences and safe states to reinforce system safety concepts.</li>
+      <li>Designed for practicing calculations and understanding deadlock avoidance for exams and assignments.</li>
+    </ul>
+  </p>
+
+  <!-- Tools / Badges -->
+  <p class="mb-3"><b>Tech Stack:</b></p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Java</span>
+  </div>
+
+  <!-- Contributors -->
+  <p class="mb-2 font-semibold">Contributor:</p>
+  <ul class="list-disc ml-5 mb-4">
+    <li>Moegamat Samsodien</li>
+  </ul>
+
+  <!-- GitHub Button -->
+  <a href="https://github.com/Plum165/Bankers-Algorithm" class="btn github-btn mt-2 w-full text-center">View on GitHub</a>
+</div>
+
+<!-- Coursework Project: Java Gym Simulation with Time Tracking -->
+<div class="project-card bg-gradient-to-br from-purple-600 via-indigo-700 to-pink-700 p-6" data-category="coursework">
+  <!-- Status / Tag -->
+  <span class="inline-block bg-blue-400 text-purple-900 font-bold text-xs px-2 py-1 rounded-full mb-2 uppercase">📚 Coursework</span>
+
+  <!-- Contributor Link -->
+  <a href="https://linkedin.com/in/moegamatsamsodien" class="project-link text-yellow-300 text-sm font-semibold mb-2">Solo Project</a>
+
+  <!-- Project Title -->
+  <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">Java Gym Simulation with Time Tracking</h3>
+
+  <!-- Project Description -->
+  <p class="project-desc mb-3">
+    Simulation demonstrating a custom TimeTracker class for logging performance metrics:
+    <ul class="list-disc ml-5 mt-2">
+      <li>Tracks execution times in nanoseconds for various operations.</li>
+      <li>Converts and exports results to CSV for analysis.</li>
+      <li>Proof of concept for applying TimeTracker in performance monitoring scenarios.</li>
+    </ul>
+  </p>
+
+  <!-- Tools / Badges -->
+  <p class="mb-3"><b>Tech Stack:</b></p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Java</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Custom Timing Class</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">CSV Export</span>
+  </div>
+
+  <!-- Contributors -->
+  <p class="mb-2 font-semibold">Contributor:</p>
+  <ul class="list-disc ml-5 mb-4">
+    <li>Moegamat Samsodien </li>
+  </ul>
+
+  <!-- GitHub Button -->
+  <a href="https://github.com/Plum165/Java-Gym-Simulation" class="btn github-btn mt-2 w-full text-center">View on GitHub</a>
+</div>
+
+<!-- Hackathon Project: Web Usage Time Tracker -->
+<div class="project-card bg-gradient-to-br from-purple-600 via-indigo-700 to-pink-700 p-6" data-category="side">
+  <!-- Status / Tag -->
+  <span class="inline-block bg-red-400 text-purple-900 font-bold text-xs px-2 py-1 rounded-full mb-2 uppercase">Hackathon</span>
+
+  <!-- Contributor Link -->
+  <a href="https://linkedin.com/in/moegamatsamsodien" class="project-link text-yellow-300 text-sm font-semibold mb-2">Solo Project</a>
+
+  <!-- Project Title -->
+  <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">Web Usage Time Tracker</h3>
+
+  <!-- Project Description -->
+  <p class="project-desc mb-3">
+    Web-based tool built for TheTime Hackathon to track time spent on websites:
+    <ul class="list-disc ml-5 mt-2">
+      <li>Live timer and session logging for website usage.</li>
+      <li>Interactive charts to visualize browsing patterns.</li>
+      <li>Encourages better time management and self-awareness online.</li>
+    </ul>
+  </p>
+
+  <!-- Tools / Badges -->
+  <p class="mb-3"><b>Tech Stack:</b></p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">HTML</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">CSS</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">JavaScript</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Chart.js</span>
+  </div>
+
+  <!-- Contributors -->
+  <p class="mb-2 font-semibold">Contributor:</p>
+  <ul class="list-disc ml-5 mb-4">
+    <li>Moegamat Samsodien</li>
+  </ul>
+
+  <!-- GitHub Button -->
+  <a href="https://github.com/Plum165/web-usage-time-tracker" class="btn github-btn mt-2 w-full text-center">View on GitHub</a>
+  <a href="https://plum165.github.io/web-usage-time-tracker" class="btn github-btn mt-2 w-full text-center">Live Demo</a>
+</div>
+
+<!-- Hackathon Project: MegaZoo Hackathon – Grid-Based Zoo Planner -->
+<div class="project-card bg-gradient-to-br from-purple-600 via-indigo-700 to-pink-700 p-6" data-category="hackathon">
+  <!-- Status / Tag -->
+  <span class="inline-block bg-yellow-400 text-purple-900 font-bold text-xs px-2 py-1 rounded-full mb-2 uppercase">🏆 Hackathon</span>
+
+  <!-- Contributor Link -->
+  <a href="#" class="project-link text-yellow-300 text-sm font-semibold mb-2">Team: Null Terminators</a>
+
+  <!-- Project Title -->
+  <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">MegaZoo Hackathon – Grid-Based Zoo Planner</h3>
+
+  <!-- Project Description -->
+  <p class="project-desc mb-3">
+    2D zoo layout planner built during MegaZoo Hackathon:
+    <ul class="list-disc ml-5 mt-2">
+      <li>Placement algorithm for animals, shops, and pathways on an (a × a) grid.</li>
+      <li>Optimizes constraints for spacing, rotation, cost, and visitor interest score.</li>
+      <li>Enhances simulation of zoo layouts for engagement and planning efficiency.</li>
+    </ul>
+  </p>
+
+  <!-- Tools / Badges -->
+  <p class="mb-3"><b>Tech Stack:</b></p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Python</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">JSON</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">2D Grid Algorithms</span>
+  </div>
+
+  <!-- Contributors -->
+  <p class="mb-2 font-semibold">Team Contributors:</p>
+  <ul class="list-disc ml-5 mb-4">
+    <li><a href="https://www.linkedin.com/in/entisaar-elfadl-400744351/" target="_blank" class="underline">Entisaar Elfadl</a></li>
+    <li><a href="#" target="_blank" class="underline">Misha Jacobs</a></li>
+  </ul>
+
+  <!-- GitHub Button -->
+  <a href="https://github.com/Plum165/mega-zoo-planner" class="btn github-btn mt-2 w-full text-center">View on GitHub</a>
+</div>
+
+<!-- Academic Project: Task Network Visualizer -->
+<div class="project-card bg-gradient-to-br from-green-600 via-lime-500 to-emerald-600 p-6" data-category="academic">
+  <!-- Status / Tag -->
+  <span class="inline-block bg-lime-400 text-green-900 font-bold text-xs px-2 py-1 rounded-full mb-2 uppercase">📚 Academic Project</span>
+
+  <!-- Contributor Link -->
+  <span class="project-link text-lime-300 text-sm font-semibold mb-2">Solo Project</span>
+
+  <!-- Project Title -->
+  <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">Task Network Visualizer</h3>
+
+  <!-- Project Description -->
+  <p class="project-desc mb-3">
+    Web-based tool for creating and visualizing activity-on-node diagrams:
+    <ul class="list-disc ml-5 mt-2">
+      <li>Add tasks with estimated times and dependencies to generate project schedules.</li>
+      <li>Calculates Earliest Start/Finish, Latest Start/Finish, Total Float, and Free Float.</li>
+      <li>Interactive SVG diagram with curved or straight arrows for task dependencies.</li>
+      <li>Supports exporting project data as JSON and (future) PDF.</li>
+      <li>Dark mode toggle and visually responsive layout for ease of use.</li>
+    </ul>
+  </p>
+
+  <!-- Tools / Badges -->
+  <p class="mb-3"><b>Tech Stack:</b></p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-lime-200 text-green-900 px-2 py-1 rounded-full text-xs font-semibold">HTML</span>
+    <span class="bg-lime-200 text-green-900 px-2 py-1 rounded-full text-xs font-semibold">CSS</span>
+    <span class="bg-lime-200 text-green-900 px-2 py-1 rounded-full text-xs font-semibold">JavaScript</span>
+    <span class="bg-lime-200 text-green-900 px-2 py-1 rounded-full text-xs font-semibold">SVG</span>
+  </div>
+
+  <!-- Contributors -->
+  <p class="mb-2 font-semibold">Contributors:</p>
+  <ul class="list-disc ml-5 mb-4">
+    <li>Moegamat Samsodien</li>
+  </ul>
+
+  <!-- GitHub Button -->
+  <a href="https://github.com/Plum165/Task_Network_Visualizer" class="btn github-btn mt-2 w-full text-center">View on GitHub</a>
+    <a href="https://plum165.github.io/Network_Analysis" class="btn github-btn mt-2 w-full text-center">Live Demo</a>
+</div>
+
+<!-- Coursework Project: Dictionary Search Comparison Tool -->
+<div class="project-card bg-gradient-to-br from-purple-600 via-indigo-700 to-pink-700 p-6" data-category="coursework">
+  <!-- Status / Tag -->
+  <span class="inline-block bg-blue-400 text-purple-900 font-bold text-xs px-2 py-1 rounded-full mb-2 uppercase">📚 Coursework</span>
+
+  <!-- Contributor Link -->
+  <span class="project-link text-yellow-300 text-sm font-semibold mb-2">Solo Project</span>
+
+  <!-- Project Title -->
+  <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">Dictionary Search Comparison Tool (AVL Tree vs Binary Search)</h3>
+
+  <!-- Project Description -->
+  <p class="project-desc mb-3">
+    Java console application for educational comparison of search techniques:
+    <ul class="list-disc ml-5 mt-2">
+      <li>Implements AVL Tree search and Binary Search on a sorted array (TreeSet).</li>
+      <li>Loads a dictionary file and query file for testing search efficiency.</li>
+      <li>Displays the number of comparisons for each search method per word.</li>
+      <li>Exports binary search comparison results to a file for analysis.</li>
+      <li>Designed to teach data structures, searching, and efficiency analysis.</li>
+    </ul>
+  </p>
+
+  <!-- Tools / Badges -->
+  <p class="mb-3"><b>Tech Stack:</b></p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Java</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">AVL Tree</span>
+    <span class="bg-indigo-200 text-purple-900 px-2 py-1 rounded-full text-xs font-semibold">Binary Search</span>
+  </div>
+
+  <!-- Contributors -->
+  <p class="mb-2 font-semibold">Contributors:</p>
+  <ul class="list-disc ml-5 mb-4">
+    <li>Moegamat Samsodien</li>
+  </ul>
+
+  <!-- GitHub Button -->
+  <a href="https://github.com/Plum165/DictSearchTool" class="btn github-btn mt-2 w-full text-center">View on GitHub</a>
+
+</div>
+
+
+    
+        
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-16 text-center py-6">
+    <p>© <span id="year"></span> Moegamat Samsodien</p>
+    <p><a href="https://linkedin.com/in/moegamatsamsodien" class="underline">LinkedIn</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+  AOS.init({ duration: 1000, once: true });
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const themeSettings = {
+  purple: {
+    cardGradients: [
+      'from-purple-600 via-indigo-700 to-pink-700',
+      'from-pink-600 via-purple-600 to-indigo-800',
+      'from-indigo-600 via-purple-700 to-fuchsia-700',
+      'from-purple-500 via-pink-500 to-indigo-600'
+    ],
+    linkColor: 'text-yellow-300',
+    githubBtn: '#5a1da0'
+  },
+  green: {
+    cardGradients: [
+      'from-green-600 via-lime-500 to-emerald-600',
+      'from-lime-400 via-green-500 to-teal-500',
+      'from-emerald-500 via-lime-400 to-green-600',
+      'from-green-500 via-lime-600 to-teal-600'
+    ],
+    linkColor: 'text-lime-300',
+    githubBtn: '#006b3a'
+  },
+  blue: {
+    cardGradients: [
+      'from-blue-600 via-cyan-500 to-indigo-600',
+      'from-cyan-400 via-blue-500 to-indigo-500',
+      'from-indigo-500 via-blue-400 to-cyan-500',
+      'from-blue-500 via-cyan-600 to-indigo-600'
+    ],
+    linkColor: 'text-cyan-300',
+    githubBtn: '#1a5aa0'
+  },
+  yellowblue: {
+    cardGradients: [
+      'from-yellow-400 via-blue-400 to-indigo-500',
+      'from-blue-500 via-yellow-400 to-sky-500',
+      'from-indigo-600 via-yellow-500 to-blue-500',
+      'from-sky-400 via-indigo-500 to-yellow-400'
+    ],
+    linkColor: 'text-yellow-200',
+    githubBtn: '#004aad'
+  },
+  bloodred: {
+    cardGradients: [
+      'from-red-700 via-red-800 to-black',
+      'from-red-600 via-rose-700 to-red-900',
+      'from-rose-800 via-red-700 to-black',
+      'from-red-800 via-black to-rose-900'
+    ],
+    linkColor: 'text-red-300',
+    githubBtn: '#7f1d1d'
+  },
+  blueyelloworange: {
+    cardGradients: [
+      'from-blue-500 via-yellow-400 to-orange-500',
+      'from-orange-500 via-blue-400 to-yellow-400',
+      'from-yellow-400 via-orange-500 to-blue-500',
+      'from-blue-600 via-orange-400 to-yellow-500'
+    ],
+    linkColor: 'text-orange-200',
+    githubBtn: '#ea580c'
+  }
+};
+
+  let themes = ["purple","green","blue","yellowblue", "blueyelloworange" , "bloodred"];
+  let idx = 0;
+  const themeToggle = document.getElementById("theme-toggle");
+  const projectCards = document.querySelectorAll(".project-card");
+  const githubBtns = document.querySelectorAll(".github-btn");
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    const settings = themeSettings[theme];
+    projectCards.forEach((card, i) => {
+      card.className = "project-card bg-gradient-to-br " + settings.cardGradients[i % settings.cardGradients.length];
+      card.querySelector(".project-link").className = "project-link " + settings.linkColor;
+    });
+    githubBtns.forEach(btn => btn.style.background = settings.githubBtn);
+  }
+
+  themeToggle.addEventListener("click", () => {
+    idx = (idx + 1) % themes.length;
+    applyTheme(themes[idx]);
+  });
+
+  applyTheme(themes[idx]);
+
+  // Category filter
+  const catBtns = document.querySelectorAll(".category-btn");
+  const categoryDesc = document.getElementById("category-desc");
+  const projCardList = document.querySelectorAll(".project-card");
+  const categoryTexts = {
+  all: '',
+  hackathon: `Hackathon projects: High-energy, time-bound creations where rapid prototyping meets collaborative problem solving. 
+Teams often tackle real-world challenges in 24–72 hours, experimenting with new tools and innovative approaches. 
+These projects highlight creativity, adaptability, and the ability to deliver functional solutions under pressure.`,
   
-        <img
-          src="profile.jpg"
-          alt="Moegamat Samsodien"
-          class="h-16 w-16 rounded-full mr-4 object-cover"
-        />
-        <div>
-          <h1 class="text-2xl font-semibold">Moegamat Samsodien</h1>
-          <p class="text-sm text-white">
-            Full‑Stack Developer &amp; Machine Learning Developer
-          </p>
-        </div>
-        <!-- LinkedIn  -->
-        <a
-          href="https://www.linkedin.com/in/moegamatsamsodien/"
-          target="_blank"
-          rel="noopener"
-          class="ml-auto text-purple-200 underline"
-          >LinkedIn ↗</a
-        >
-      </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-4 py-10">
-      <!-- About Section -->
-      <section id="about" class="mb-10">
-        <h2 class="text-xl font-bold mb-4">About Me</h2>
-        <p class="leading-relaxed text-white">
-          <!-- Brief bio goes here -->
-          I'm a third-year Computer Science student at the University of Cape Town and a proud Moshal Scholar. I’m passionate about solving real-world problems through tech whether that means building inclusive FinTech apps, designing smarter healthcare systems, or crafting personalized AI solutions.
-
-With hands-on experience in machine learning, UI/UX design, and full-stack development, I’ve worked on everything from digital triage systems to recommender engines. Outside the classroom, I lead with purpose as a tutor, sports captain, and active volunteer always learning, building, and giving back.
-        </p>
-      </section>
-
-      <!-- Projects Section -->
-      <section id="projects">
-        <h2 class="text-xl font-bold mb-4">Projects</h2>
-        <div class="grid md:grid-cols-2 gap-6">
-          
-          <!-- Project 2 : FinTech -->
-          <div class="bg-black rounded-lg shadow p-6">
-            <h3 class="text-lg text-purple-600 font-semibold mb-2">🏆 2nd Place – FinTech Hackathon : USSD + Interledger Payment App</h3>
-            <p class="text-sm text-white mb-4">
-              Built an offline-friendly payment app using USSD and Interledger. Enabled cross-border mobile payments without internet access, integrated with Africa’s Talking and Open Payments API.
-            </p>
-            <!-- Tools Used -->
-              <p class="text-lg text-purple-600 font-semibold mb-2">
-              Tools:
-            </p>
-  <p class="text-sm text-pink-300 mb-4">
- USSD, Node.js, Express, Interledger API, Africa’s Talking, JavaScript
-  </p>
-            <p class="text-lg text-purple-600 font-semibold mb-2">
-              Contributers:
-            </p>
-            
-            <a
-              href="https://www.linkedin.com/in/ACoAADnntV4Bu4s9XL59yet_ghTXc0gIJKTWYg4?lipi=urn%3Ali%3Apage%3Ad_flagship3_detail_base%3BnkVnkDscS9CW%2FzepxJ6B9Q%3D%3D"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Sakeenah Majiet →</a
-            >
-            <a
-              href="https://www.linkedin.com/in/ACoAAEDuoWQBcswkg52H4swWa25VI2PhzCwnGrU?lipi=urn%3Ali%3Apage%3Ad_flagship3_detail_base%3BnkVnkDscS9CW%2FzepxJ6B9Q%3D%3D"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Amukelani Rikhotso →</a
-            >
-            <a
-              href="https://www.linkedin.com/in/ACoAADT8U7YBeUA3iE9Gs7QI6G7H5NQfi1DiudY?lipi=urn%3Ali%3Apage%3Ad_flagship3_detail_base%3BnkVnkDscS9CW%2FzepxJ6B9Q%3D%3D"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Raibim Alam →</a
-            >
-            <a
-              href="https://www.linkedin.com/in/ACoAAFnr23UB48-o4BWkMNPH632oUpalqVTN1uQ?lipi=urn%3Ali%3Apage%3Ad_flagship3_detail_base%3BnkVnkDscS9CW%2FzepxJ6B9Q%3D%3D"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Lateef Ahmed →</a
-            >
-            <a
-              href="https://github.com/Plum165/FinTechHackthon"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-400 underline block mt-4"
-              >View on GitHub →</a
-            >
-          </div>
-           
-           <!-- Simplified torrent-like file-sharing -->
-          <div class="bg-black rounded-lg shadow p-6">
-            <h3 class="text-lg text-purple-600 font-semibold mb-2">Simplified torrent-like file-sharing</h3>
-            <p class="text-sm text-white mb-4">
-              A Python-based peer-to-peer file sharing simulation using TCP and UDP. Includes a tracker for peer discovery, file matching, and transfer functionality. Mimics torrent-like behavior in a simplified educational setup.
-            </p>
-            <!-- Tools Used -->
-              <p class="text-lg text-purple-600 font-semibold mb-2">
-              Tools:
-            </p>
-  <p class="text-sm text-pink-300 mb-4">
- Python, TCP/UDP sockets, Multithreading
-  </p>
-           <p class="text-lg text-purple-600 font-semibold mb-2">
-              Contributers:
-            </p>
-            <a
-              href="https://www.linkedin.com/in/aneesah-barnes-724143237?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bx73g87miTCKX4RjF35AzIg%3D%3D"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Aneesah Barnes →</a
-            >
-
-            <a
-              href="https://www.linkedin.com/in/moegamatsamsodien/"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Marcus Buxmann →</a
-            >
-            
-            <a
-              href="https://github.com/Plum165/Simplified-torrent-like-file-sharing"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-400 underline block mt-4"
-              >View on GitHub →</a
-            >
-          </div>
-          <!-- FNB Data Quest -->
-          <div class="bg-black rounded-lg shadow p-6">
-            <h3 class="text-lg text-purple-600 font-semibold mb-2">FNB DataQuest : Product Recommendation System</h3>
-            <p class="text-sm text-white mb-4">
-              Built a product recommendation model using Python and LightGBM, trained on 400K+ e-commerce transactions. Focused on predicting customer purchases through behavioral data, feature engineering, and model evaluation.
-              </p>
-              <!-- Tools Used -->
-              <p class="text-lg text-purple-600 font-semibold mb-2">
-              Tools:
-            </p>
-  <p class="text-sm text-pink-300 mb-4">
- Python, LightGBM, Pandas, Scikit-learn
-  </p>
-            <a
-              href="https://github.com/Plum165/RecSystems2025"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-400 underline"
-              >View on GitHub →</a
-            >
-          </div>
-          <!-- Project 1 -->
-          <div class="bg-black rounded-lg shadow p-6">
-            <h3 class="text-lg text-purple-600 font-semibold mb-2">TasteLoop App</h3>
-            <p class="text-sm text-white mb-4">
-              AI‑powered recommender that suggests movies, games &amp; series based
-              on user preferences and comments.
-            </p>
-            <!-- Tools Used -->
-              <p class="text-lg text-purple-600 font-semibold mb-2">
-              Tools:
-            </p>
-  <p class="text-sm text-pink-300 mb-4">
-  React, Node.js, Express.js, OpenAI API, Tailwind CSS, JavaScript
-  </p>
-            <a
-              href="https://github.com/Plum165/UnitedHacksV5"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-400 underline"
-              >View on GitHub →</a
-            >
-          </div>
-          <!-- Chommies -->
-          <div class="bg-black rounded-lg shadow p-6">
-            <h3 class="text-lg text-purple-600 font-semibold mb-2">Chommies SQL Simulation – Java + MySQL</h3>
-            <p class="text-sm text-white mb-4">
-              It a time of when I started my coding journey. Built a Java-based SQL simulation program that connects to a MySQL database to perform core university administration tasks such as adding course convenors, updating lecture venues, deregistering students, and exporting student data.
-            </p>
-            <!-- Tools Used -->
-              <p class="text-lg text-purple-600 font-semibold mb-2">
-              Tools:
-            </p>
-  <p class="text-sm text-pink-300 mb-4">
- Java, MySQL, JDBC
-  </p>
-            <p class="text-lg text-purple-600 font-semibold mb-2">
-
-              Contributers:
-            </p>
-            <a
-              href="https://www.linkedin.com/in/aneesah-barnes-724143237?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bx73g87miTCKX4RjF35AzIg%3D%3D"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Aneesah Barnes →</a
-            >
-
-            <a
-              href="https://www.linkedin.com/in/shriya-inderpal-566255371/"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Shriya Inderpal →</a
-            >
-            <a
-              href="https://www.linkedin.com/in/moegamatsamsodien/"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Casey Hunter →</a
-            >
-            <a
-              href="https://www.linkedin.com/in/aria-jeewon-4586182b5/"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Aria Jeewon →</a
-            >
-            <a
-              href="https://github.com/Plum165/database"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-400 underline block mt-4"
-              >View on GitHub →</a
-            >
-          </div>
-          <!-- Health Care -->
-          <div class="bg-black rounded-lg shadow p-6">
-            <h3 class="text-lg text-purple-600 font-semibold mb-2">Rural Hospital Triage App (Hackathon Prototype)</h3>
-            <p class="text-sm text-white mb-4">
-              During a healthcare hackathon, I helped design a digital triage system to replace slow, paper-based processes in rural hospitals. The prototype enabled nurses to assess patient urgency, notify doctors of critical cases in real-time, and streamline low-risk case management—reducing burnout and improving care delivery.
-            </p>
-            <!-- Tools Used -->
-              <p class="text-lg text-purple-600 font-semibold mb-2">
-              Tools:
-            </p>
-  <p class="text-sm text-pink-300 mb-4">
-  Figma
-  </p>
-            <p class="text-lg text-purple-600 font-semibold mb-2">
-              Contributers:
-            </p>
-            <a
-              href="https://www.linkedin.com/in/bokang-ndaba-561286280?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_project_creator_details_modal%3BBtYgnorfRyCIlWByEuXmYg%3D%3D"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Bokang Ndaba →</a
-            >
-
-            <a
-              href="https://www.linkedin.com/in/ntuthuko-clement-motha-943915295?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_project_creator_details_modal%3Bsy8k5ZmiQ0KlBsFF35rwqA%3D%3D"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Ntuthuko Clement Motha →</a
-            >
-            <a
-              href="https://www.linkedin.com/in/ntokozo-vundla-5a3186237?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_project_creator_details_modal%3Bsy8k5ZmiQ0KlBsFF35rwqA%3D%3D"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Ntokozo Vundla →</a
-            >
-            <a
-              href="https://www.linkedin.com/in/nyeleti-mushwana-212b93230/"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Nyeleti-Mushwana →</a
-            >
-            <a
-              href="https://www.linkedin.com/in/kamogelo-selabi-368737208/"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Kamogelo Selabi →</a
-            >
-            <a
-              href="https://www.linkedin.com/in/moegamat-ridaa-botha-827783202/"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Ridaa Botha →</a
-            >
-            <a
-              href="https://github.com/Plum165/Innovate4Health"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-400 underline block mt-4"
-              >View on GitHub →</a
-            >
-          </div>
-
-           <!-- Page Replacement Simulator -->
-          <div class="bg-black rounded-lg shadow p-6">
-            <h3 class="text-lg text-purple-600 font-semibold mb-2">Page Replacement Simulator</h3>
-            <p class="text-sm text-white mb-4">
-              A Java tool for visualizing page replacement algorithms like FIFO, LRU, OPT, and Clock variants. Built to reinforce OS concepts through step-by-step simulations with custom inputs and memory state visuals.
-            </p>
-             <!-- Tools Used -->
-              <p class="text-lg text-purple-600 font-semibold mb-2">
-              Tools:
-            </p>
-  <p class="text-sm text-pink-300 mb-4">
-  Java, Algorithms (FIFO, LRU, OPT, Clock)
-  </p>
-            <a
-              href="https://github.com/Plum165/PgAlgo"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-400 underline block mt-2"
-              >View on GitHub →</a
-            >
-          </div>
-
-           <!-- Banker's Algorithm Java Program -->
-          <div class="bg-black rounded-lg shadow p-6">
-            <h3 class="text-lg text-purple-600 font-semibold mb-2">Banker's Algorithm Java Program</h3>
-            <p class="text-sm text-white mb-4">
-              A Java-based learning tool that implements the Banker's Algorithm for deadlock avoidance in operating systems. It checks for safe sequences by simulating resource allocation using Need, Allocation, and Available matrices.
-
-Purpose: Built to practice calculating safe states and reinforce system safety concepts for exams and assignments.</p>
-<!-- Tools Used -->
-              <p class="text-lg text-purple-600 font-semibold mb-2">
-              Tools:
-            </p>
-            <p class="text-sm text-pink-300 mb-4">
-  Java
-  </p>            
-<a
-              href="https://github.com/Plum165/BankerAlgo"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-400 underline"
-              >View on GitHub →</a
-            >
-          </div>
-          <!-- Gym Simulation -->
-          <div class="bg-black rounded-lg shadow p-6">
-            <h3 class="text-lg text-purple-600 font-semibold mb-2">Java Gym Simulation with Time Tracking</h3>
-            <p class="text-sm text-white mb-4">
-              A simulation built to demonstrate a custom TimeTracker class that logs performance metrics in nanoseconds. Outputs are converted and exported to CSV for analysis. Serves as a proof of concept for applying TimeTracker in real-world performance monitoring.
-            </p>
-            <!-- Tools Used -->
-              <p class="text-lg text-purple-600 font-semibold mb-2">
-              Tools:
-            </p>
-  <p class="text-sm text-pink-300 mb-4">
- Java, Custom Timing Class, CSV Export
-  </p>
-            <a
-              href="https://github.com/Plum165/ConcurrentFitnessSim"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-400 underline"
-              >View on GitHub →</a
-            >
-          </div>
-          <!-- Web Page Tracker -->
-          <div class="bg-black rounded-lg shadow p-6">
-            <h3 class="text-lg text-purple-600 font-semibold mb-2">Web Usage Time Tracker</h3>
-            <p class="text-sm text-white mb-4">
-             Built as an entry for TheTime hackathon, a beginner-friendly challenge focused on creating projects inspired by the concept of time. This web-based tool helps users track how long they spend on any website, featuring a live timer, session logging, and interactive charts for data visualization. The project demonstrates practical skills in frontend development, user experience, and data visualization, while encouraging better time management online.
-             </p>
-             <!-- Tools Used -->
-              <p class="text-lg text-purple-600 font-semibold mb-2">
-              Tools:
-            </p>
-            <p class="text-sm text-pink-300 mb-4">
-            HTML, CSS, JavaScript, Chart.js
-             </p>
-             <a
-              href="https://plum165.github.io/Web-Page-Tracker/"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-500 underline block"
-              >Live Demo →</a
-            >
-            <a
-              href="https://github.com/Plum165/Web-Page-Tracker"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-400 underline"
-              >View on GitHub →</a
-            >
-          </div>
-
-          <!-- 🏥 Triage AI – From Prototype to AI-Powered Triage -->
-          <div class="bg-black rounded-lg shadow p-6">
-            <h3 class="text-lg text-purple-600 font-semibold mb-2">🏥 Triage AI – From Prototype to AI-Powered Triage</h3>
-            <p class="text-sm text-white mb-4">
-             Fusion Hacks 2 (2025) | Inspired by Innovate4Health Hackathon (2024)
-            Triage AI is a smart chatbot that assesses symptoms, assigns urgency levels (Red, Yellow, Green), and sends cases to a doctor dashboard. Built after insights from my previous work on rural hospital triage systems, this version uses real-time AI and PDF export to enhance decision support.
-              </p>
-             <!-- Tools Used -->
-              <p class="text-lg text-purple-600 font-semibold mb-2">
-              Tools:
-            </p>
-            <p class="text-sm text-pink-300 block mb-4">
-            Node.js, Express, Groq API, HTML/CSS, PDFKit
-            
-            <a
-              href="https://github.com/Plum165/triage-ai-web"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-400 underline block mb-4"
-              >View on GitHub →</a
-            >
-          </div>
-
-          <!-- Entlect -->
-          <div class="bg-black rounded-lg shadow p-6">
-            <h3 class="text-lg text-purple-600 font-semibold mb-2">MegaZoo Hackathon – Grid-Based Zoo Planner (Team: Null Terminators)</h3>
-            <p class="text-sm text-white mb-4">
-             Built a 2D placement algorithm for an artificial zoo layout using Python. Optimized placement of animals, shops, and pathways on (a × a) grid with strict constraints around spacing, rotation, cost, and interest score.
-            </p>
-            <!-- Tools Used -->
-              <p class="text-lg text-purple-600 font-semibold mb-2">
-              Tools:
-            </p>
-  <p class="text-sm text-pink-300 mb-4">
- Python, JSON, 2D Grid Algorithms
-  </p>
-           <p class="text-lg text-purple-600 font-semibold mb-2">
-              Contributers:
-            </p>
-            <a
-              href="https://www.linkedin.com/in/entisaar-elfadl-400744351/"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Entisaar Elfadl →</a
-            >
-
-            <a
-              href="https://www.linkedin.com/in/moegamatsamsodien/"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-100 underline block"
-              >Misha Jacobs →</a
-            >
-            
-            <a
-              href="https://github.com/Plum165/Simplified-torrent-like-file-sharing"
-              target="_blank"
-              rel="noopener"
-              class="text-purple-400 underline block mt-4"
-              >View on GitHub →</a
-            >
-          </div>
-
-           <!-- End of the projects -->
-        </div>
-      </section>
-      <section id="sports" class="mb-10 mt-10">
+  coursework: `Coursework projects: Structured assignments and exercises designed to reinforce core Computer Science concepts. 
+They include networking simulations, operating systems tools, algorithm visualizations, and data structure experiments. 
+These projects demonstrate mastery of theory, careful implementation, and attention to correctness and efficiency.`,
+  
+  side: `Side projects: Personal experiments or passion projects undertaken independently to explore new technologies or ideas. 
+They might include AI-powered tools, web apps, visualization projects, or creative coding experiments. 
+These projects show curiosity, initiative, and a drive to learn beyond formal requirements.`,
+  
+  academic: `Academic helpers: Utility projects built to aid learning, streamline exercises, or illustrate concepts clearly. 
+They include tools for studying algorithms, visualizing data structures, or simulating systems for practice. 
+While not production-ready, they demonstrate problem-solving, understanding of core principles, and practical experimentation.`
+};
 
 
-  <h2 class="text-xl font-bold mb-4">Sports Section</h2>
-  <p class="leading-relaxed text-white mb-4">
-          I’ve always been someone who couldn’t sit still being at home felt like a cage, so I’d find any excuse to get out and stay active. Before falling ill in 2020, I was deeply involved in sports, often doing 3 to 5 different ones a year just to keep moving and have fun. Whether it was on the field or the court, sports gave me freedom, joy, and a sense of purpose. I’m naturally energetic, and being active has always been my outlet and identity.
-</p>
-  <div class="mb-6">
-    <label for="sportSelect" class="text-white">Choose a sport:</label>
-    <select id="sportSelect" class="ml-2 bg-gray-800 text-white px-2 py-1 rounded">
-      <option value="">-- Select --</option>
-      <option value="Archery">Archery</option>
-      <option value="Badminton">Badminton</option>
-      <option value="Baseball">Baseball</option>
-      <option value="Basketball">Basketball</option>
-      <option value="Chess">Chess</option>
-      <option value="Cricket">Crciket</option>
-      <option value="Netball">Netball</option>
-      <option value="Pool">Pool</option>
-      <option value="Rugby">Rugby</option>
-      <option value="Soccer">Soccer</option>
-      <option value="Squash">Squash</option>
-      <option value="Table Tennis">Table Tennis</option>
-      <option value="Tennis">Tennis</option>
-      <option value="Volleyball">Volleyball</option>
-
-      <!-- Add more sports if needed -->
-    </select>
-  </div>
-  <div id="sportsOutput" class="text-white space-y-4"></div>
-</section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 mt-16">
-      <div
-        class="max-w-5xl mx-auto px-4 py-6 text-center text-sm text-white"
-      >
-        © <span id="year"></span> Moegamat Samsodien. All rights reserved.
-      </div>
-      <script>
-        // Update year automatically
-        document.getElementById("year").textContent = new Date().getFullYear();
-      </script>
-    </footer>
-    <!-- SheetJS library (to read Excel files in browser) -->
-<script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
-
-<script>
-  const sportSelect = document.getElementById("sportSelect");
-  const output = document.getElementById("sportsOutput");
-
-  sportSelect.addEventListener("change", function () {
-    const selectedSport = this.value;
-    if (!selectedSport) return (output.innerHTML = "");
-
-    fetch("Sports_I_Did.xlsx")
-      .then((res) => res.arrayBuffer())
-      .then((data) => {
-        const workbook = XLSX.read(data, { type: "array" });
-        const sheet = workbook.Sheets[workbook.SheetNames[0]];
-        const jsonData = XLSX.utils.sheet_to_json(sheet);
-
-        const filtered = jsonData.filter((entry) => entry.Sport === selectedSport);
-        if (filtered.length === 0) {
-          output.innerHTML = `<p>No data found for ${selectedSport}</p>`;
-          return;
-        }
-
-        output.innerHTML = filtered
-          .map(
-            (entry) => `
-              <div class="p-4 bg-black rounded-lg shadow">
-                <h3 class="text-lg font-semibold text-purple-600">${entry.Achievement} (${entry.Year})</h3>
-                <p class="text-white">${entry.Description}</p>
-              </div>
-            `
-          )
-          .join("");
-      })
-      .catch((err) => {
-        output.innerHTML = `<p class="text-red-400">Failed to load Excel file. Make sure it's in the same folder as this HTML file.</p>`;
-        console.error(err);
+  catBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const filter = btn.getAttribute("data-filter");
+      categoryDesc.textContent = categoryTexts[filter];
+      projCardList.forEach(card => {
+        card.style.display = (filter === "all" || card.dataset.category === filter) ? "flex" : "none";
       });
+    });
   });
 </script>
 
-  </body>
+</body>
 </html>
-
-
