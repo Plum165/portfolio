@@ -170,6 +170,7 @@ const projects = [
   }
 // ----------------- Activities Section -----------------
   const activities = [
+    { id: "uct-archery-equipment-manager", title: "UCT Archery Club Equipment Manager",  category: "volunteer",  date: "2025 – 2026",  badge: "Club Management", desc: "Overseeing all archery equipment and storage operations for the UCT Archery Club. Responsibilities include maintaining gear, coordinating budgets and orders with the treasurer, and ensuring equipment readiness for practices and competitions." },
     { id: "chess-competitive", title: "Competitive Chess", category: "sport", date: "Ongoing", badge: "University Player", desc: "Advanced from a school team leader to a university-level player for the College House team, maintaining an average ELO rating of 1500." },
     { id: "volunteer-tutoring", title: "Peer Tutoring & Mentorship", category: "volunteer", date: "Ongoing", badge: "Volunteer", desc: "Dedicated time to mentoring fellow students through peer tutoring and leading community coding workshops, helping them succeed in challenging technical subjects." },
     { id: "rackathon-2025", title: "Rackathon Tournament", category: "sport", date: "10 Sep 2025", badge: "🏆 Tournament Runner-Up", desc: "Competed in a multi-sport tournament combining squash, tennis, table tennis, and badminton. Secured 2nd place in the Men’s D group, showcasing versatility across multiple racket disciplines." },
@@ -186,7 +187,7 @@ const projects = [
   const activityDesc = $('#activity-desc');
 
   const activityCategoryTexts = {
-    all: 'A collection of my athletic, leadership, and community activities.',
+    all: 'Leadership and community engagement are key parts of who I am. Whether mentoring students, volunteering, or captaining sports teams, I strive to uplift others and lead with empathy and purpose.',
     sport: 'Highlights from my experience in team and individual sports.',
     volunteer: 'Efforts to support my community through mentorship and teaching.'
   };
@@ -242,11 +243,16 @@ const projects = [
   const categoryButtons = $$('.category-btn');
   const categoryDesc = $('#category-desc');
   const categoryTexts = {
-    all: 'All projects',
-    hackathon: 'Hackathon projects — prototypes built under time constraints (24–72 hours).',
-    coursework: 'Coursework — projects aligned with courses and learning outcomes.',
-    side: 'Side projects — personal or exploratory work built independently.',
-    academic: 'Academic helpers — tools to support learning and teaching.'
+all: "All projects: a collection of everything I’ve built, from quick experiments to full-scale systems. Explore the range of my work across AI, FinTech, and creative tech.",
+
+hackathon: "Hackathon projects: rapid, high-energy builds created in 24–72 hours. These prototypes combine innovation, teamwork, and problem-solving under intense time pressure, designed to test what’s possible in a weekend.",
+
+coursework: "Coursework projects: structured academic builds demonstrating technical mastery, clean design, and deep understanding of computer science principles. Each project reflects problem-solving through theory-driven implementation.",
+
+side: "Side projects: self-driven explorations born from curiosity. These experiments blend creativity and engineering, from concept prototypes to tools that reflect what I love learning outside the classroom.",
+
+academic: "Academic helpers: tools and systems designed to enhance learning and teaching. They streamline workflows, visualize concepts, and make computer science more approachable for students and educators alike."
+
   };
 
   function setActiveCategory(filter) {
