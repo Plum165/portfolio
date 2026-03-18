@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     $('#mobile-menu').classList.toggle('hidden');
   });
 
-  // ----------------- Project CMS JSON -----------------
+  
 // ----------------- Project CMS JSON -----------------
 const projects = [
   { id: "sta3022f-notes", title: "STA3022F — Advanced Statistics Study Notes", category: "academic", date: "Feb 2026 - Present", badge: "Academic", desc: "A growing collection of detailed study notes for STA3022F aimed at improving conceptual understanding and exam preparation. The notes break down complex statistical concepts into structured explanations and examples to support independent study.", tags: ["Statistics", "Technical Writing", "Academic Notes"], contributors: [{ name: "Moegamat Samsodien", link: "https://linkedin.com/in/moegamatsamsodien" }], links: [{ label: "Website", url: "https://practical-fawn.vercel.app/" }], shade: "academic" },
@@ -178,7 +178,6 @@ const projects = [
     { id: "chess-competitive", title: "Competitive Chess", category: "sport", date: "Ongoing", badge: "University Player", desc: "Advanced from a school team leader to a university-level player for the College House team, maintaining an average ELO rating of 1500." },
     { id: "volunteer-tutoring", title: "Peer Tutoring & Mentorship", category: "volunteer", date: "Ongoing", badge: "Volunteer", desc: "Dedicated time to mentoring fellow students through peer tutoring and leading community coding workshops, helping them succeed in challenging technical subjects." },
     { id: "rackathon-2025", title: "Rackathon Tournament", category: "sport", date: "10 Sep 2025", badge: "🏆 Tournament Runner-Up", desc: "Competed in a multi-sport tournament combining squash, tennis, table tennis, and badminton. Secured 2nd place in the Men’s D group, showcasing versatility across multiple racket disciplines." },
-    { id: "archery", title: "Archery", category: "sport", date: "2025", badge: "Discipline & Focus", desc: "Actively training in archery with a 36lb left-hand bow, a discipline that sharpens precision, patience, and concentration." },
     { id: "basketball-leadership", title: "Basketball Leadership", category: "sport", date: "2023 - 2024", badge: "Coach & Captain", desc: "Coached and captained the College House Residence team for the interleague season, applying years of experience that included a 3v3 tournament runner-up finish." },
     { id: "martial-arts", title: "Martial Arts Practice", category: "sport", date: "2024", badge: "Self-Discipline", desc: "Engaged in multiple martial arts, including Taekwondo for self-defense, Tai Chi for meditative discipline, and boxing for physical conditioning." },
     { id: "moshal-outreach", title: "High School Outreach Speaker", category: "volunteer", date: "Jul 2023", badge: "Moshal Program Volunteer", desc: "Returned to my former high school to inspire learners, sharing personal experiences and practical advice on university pathways, funding options, and careers in tech." },
