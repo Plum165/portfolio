@@ -11,15 +11,14 @@ import {
 } from './server/db';
 import { Project, GuestbookMessage } from './src/types';
 
-async function startServer() {
-  const app = express();
-  const PORT = 3000;
+const app = express();
+const PORT = 3000;
 
-  // Body parser middlewares
-  app.use(express.json());
+// Body parser middlewares
+app.use(express.json());
 
-  // Initialize DB immediately on boot
-  const db = getDb();
+// Initialize DB immediately on boot
+const db = getDb();
 
   // Helper middleware for auth checks
   const getAuthenticatedUser = (req: express.Request) => {
@@ -349,28 +348,37 @@ async function startServer() {
   });
 
   // --- INTEGRATE VITE FOR DEVELOPMENT OR SERVE STATICS FOR PRODUCTION ---
-  if (process.env.NODE_ENV !== 'production') {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: 'spa',
-    });
-    app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath));
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
-    });
+  const isVercel = typeof process !== 'undefined' && (process.env.VERCEL === '1' || !!process.env.NOW_REGION);
+
+  if (!isVercel) {
+    if (process.env.NODE_ENV !== 'production') {
+      createViteServer({
+        server: { middlewareMode: true },
+        appType: 'spa',
+      }).then((vite) => {
+        app.use(vite.middlewares);
+        app.listen(PORT, '0.0.0.0', () => {
+          console.log(`\n------------------------------------------------`);
+          console.log(`Server successfully started on http://0.0.0.0:${PORT}`);
+          console.log(`Working Environment: ${process.env.NODE_ENV || 'development'}`);
+          console.log(`------------------------------------------------\n`);
+        });
+      }).catch((err) => {
+        console.error("Vite server initialization failed", err);
+      });
+    } else {
+      const distPath = path.join(process.cwd(), 'dist');
+      app.use(express.static(distPath));
+      app.get('*', (req, res) => {
+        res.sendFile(path.join(distPath, 'index.html'));
+      });
+
+      app.listen(PORT, '0.0.0.0', () => {
+        console.log(`\n------------------------------------------------`);
+        console.log(`Production Standalone Server running on port ${PORT}`);
+        console.log(`------------------------------------------------\n`);
+      });
+    }
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`\n------------------------------------------------`);
-    console.log(`Server successfully started on http://0.0.0.0:${PORT}`);
-    console.log(`Working Environment: ${process.env.NODE_ENV || 'development'}`);
-    console.log(`------------------------------------------------\n`);
-  });
-}
-
-startServer().catch((err) => {
-  console.error("Critical server startup failure", err);
-});
+export default app;

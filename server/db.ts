@@ -7,7 +7,8 @@ import { initialProjects } from './projects';
 import { initialWork } from './experience';
 import { initialActivities } from './activities';
 
-const DB_FILE = path.join(process.cwd(), 'db.json');
+const isVercel = typeof process !== 'undefined' && (process.env.VERCEL === '1' || !!process.env.NOW_REGION);
+const DB_FILE = isVercel ? '/tmp/db.json' : path.join(process.cwd(), 'db.json');
 
 interface DbSchema {
   users: { [email: string]: { id: string; name: string; email: string; passwordHash: string; salt: string; role: 'admin' | 'guest' } };
@@ -22,6 +23,18 @@ const initialMessages: GuestbookMessage[] = [];
 
 // Load or initialize DB on disk
 export function getDb(): DbSchema {
+  if (isVercel && !fs.existsSync(DB_FILE)) {
+    const templateDbPath = path.join(process.cwd(), 'db.json');
+    if (fs.existsSync(templateDbPath)) {
+      try {
+        fs.copyFileSync(templateDbPath, DB_FILE);
+        console.log(`Vercel: Borrowed bundled database template to write-through /tmp/db.json`);
+      } catch (err) {
+        console.error("Vercel: Failed copying initial database file to /tmp/db.json", err);
+      }
+    }
+  }
+
   if (!fs.existsSync(DB_FILE)) {
     // Generate salt and default password hash for administrative account
     const salt = crypto.randomBytes(16).toString('hex');
