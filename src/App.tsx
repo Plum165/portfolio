@@ -396,7 +396,7 @@ export default function App() {
         <header className="flex flex-col lg:flex-row items-start lg:items-center gap-8 justify-between mt-8">
           <div className="max-w-3xl">
             <span className="text-xs uppercase tracking-widest font-extrabold text-blue-400 bg-[#1a1a1a] border border-[#ffffff08] px-3 py-1 rounded-full">
-              Moshal Scholar & CSE Student
+              Aspiring Software Engineer
             </span>
             <h1 className="text-4xl sm:text-6xl font-black leading-tight mt-3 tracking-tight text-white hover:scale-[1.01] transition-transform duration-300">
               Moegamat Samsodien
