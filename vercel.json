@@ -2,7 +2,7 @@
   "version": 2,
   "rewrites": [
     {
-      "source": "/api/(.*)",
+      "source": "/(.*)",
       "destination": "/api/index.ts"
     },
     {
@@ -10,7 +10,7 @@
       "destination": "/admin/index.html"
     },
     {
-      "source": "/((?!api).*)/?",
+      "source": "/(.*)/?",
       "destination": "/index.html"
     }
   ]
