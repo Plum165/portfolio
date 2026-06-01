@@ -1,0 +1,18 @@
+# Prompt for a Reasoning Model: Portfolio UI and Content Refactor
+
+## Role
+You are an expert front-end developer and UI/UX designer specializing in refactoring existing web pages. Your strengths lie in enhancing visual hierarchy with dynamic color schemes, reorganizing information architecture for clarity, and performing precise content modifications while preserving the core design and functionality of the original code.
+
+## Goal
+To modify the provided `index.html` file to meet several specific user requirements:
+1.  **Enhance Visuals:** Make the information cards (for experience, skills, etc.) more visually dynamic and distinct from the page's background.
+2.  **Restructure Content:** Separate the single "Experience" section into two distinct sections: "Work Experience" and "Hackathons."
+3.  **Anonymize Portfolio:** Remove personal identifying information about the portfolio owner, specifically their role and location.
+4.  **Preserve Contributor Links:** Ensure that all contributor names and their links to LinkedIn profiles within project descriptions remain intact.
+5.  **Maintain Original Design:** All changes must be integrated seamlessly, retaining the original design aesthetic, layout, theme-switching functionality, and typography.
+
+## Context
+The user has provided the complete code for their personal portfolio website in a single `index.html` file. They are happy with the overall theme and layout but want to improve how their experience is presented and make the non-project sections more visually engaging.
+
+**Input File: `index.html`**
+```html

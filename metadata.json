@@ -1,0 +1,6 @@
+{
+  "name": "Moegamat Samsodien Portfolio",
+  "description": "Full-stack portfolio for Moegamat Samsodien with built-in user authentication, project manager, and message board.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
