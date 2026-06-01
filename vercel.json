@@ -1,8 +1,15 @@
 {
   "version": 2,
+  "buildCommand": "npm run build && vite build",
+  "installCommand": "npm ci",
+  "functions": {
+    "api/index.ts": {
+      "runtime": "nodejs20.x"
+    }
+  },
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/api/:path*",
       "destination": "/api/index.ts"
     },
     {
@@ -10,8 +17,15 @@
       "destination": "/admin/index.html"
     },
     {
-      "source": "/(.*)?",
-      "destination": "/index.html"
+      "source": "/(.*)",
+      "destination": "/dist/index.html"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/dist/index.html",
+      "status": 200
     }
   ]
 }
