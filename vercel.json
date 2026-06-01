@@ -1,18 +1,16 @@
 {
   "version": 2,
   "rewrites": [
- 
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/api/(.*)",
+      "destination": "/api/index.ts"
     },
-  
     {
       "source": "/admin/",
       "destination": "/admin/index.html"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!api).*)/?",
       "destination": "/index.html"
     }
   ]
