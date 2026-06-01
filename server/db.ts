@@ -1,11 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
-import { Project, WorkExperience, Activity, GuestbookMessage, User } from '../src/types';
+import { Project, WorkExperience, Activity, GuestbookMessage, User } from '../src/types.js';
 
-import { initialProjects } from './projects';
-import { initialWork } from './experience';
-import { initialActivities } from './activities';
+import { initialProjects } from './projects.js';
+import { initialWork } from './experience.js';
+import { initialActivities } from './activities.js';
 
 const isVercel = typeof process !== 'undefined' && (process.env.VERCEL === '1' || !!process.env.NOW_REGION);
 const DB_FILE = isVercel ? '/tmp/db.json' : path.join(process.cwd(), 'db.json');

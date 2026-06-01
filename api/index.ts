@@ -7,8 +7,8 @@ import {
   authenticateUser,
   getUserByToken,
   logoutUser
-} from '../server/db';
-import { Project, GuestbookMessage } from '../src/types';
+} from '../server/db.js';
+import { Project, GuestbookMessage } from '../src/types.js';
 
 const app = express();
 
