@@ -12,9 +12,10 @@ async function startDevServer() {
   // Serve static assets via Vite's middleware
   app.use(vite.middlewares);
 
-  app.listen(PORT, '0.0.0.0', () => {
+  app.listen(PORT, 'localhost', () => {
     console.log(`\n------------------------------------------------`);
-    console.log(`Development Server successfully started on http://0.0.0.0:${PORT}`);
+    console.log(`Development Server successfully started on http://localhost:${PORT}`);
+    console.log(`Open in your browser: http://localhost:${PORT}`);
     console.log(`------------------------------------------------\n`);
   });
 }

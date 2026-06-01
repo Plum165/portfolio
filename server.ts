@@ -356,7 +356,7 @@ const db = getDb();
       res.sendFile(path.join(distPath, 'index.html'));
     });
 
-    app.listen(PORT, '0.0.0.0', () => {
+    app.listen(PORT, 'localhost', () => {
       console.log(`\n------------------------------------------------`);
       console.log(`Production Standalone Server running on port ${PORT}`);
       console.log(`------------------------------------------------\n`);

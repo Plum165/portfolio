@@ -1,11 +1,9 @@
 {
   "version": 2,
-  "buildCommand": "npm run build && vite build",
+  "buildCommand": "npm run build",
   "installCommand": "npm ci",
-  "functions": {
-    "api/index.ts": {
-      "runtime": "nodejs20.x"
-    }
+  "env": {
+    "VERCEL": "1"
   },
   "rewrites": [
     {
@@ -13,19 +11,12 @@
       "destination": "/api/index.ts"
     },
     {
-      "source": "/admin/",
+      "source": "/admin",
       "destination": "/admin/index.html"
     },
     {
       "source": "/(.*)",
-      "destination": "/dist/index.html"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/dist/index.html",
-      "status": 200
+      "destination": "/index.html"
     }
   ]
 }
