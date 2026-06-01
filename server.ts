@@ -350,21 +350,27 @@ const db = getDb();
   // --- INTEGRATE VITE FOR DEVELOPMENT OR SERVE STATICS FOR PRODUCTION ---
   const isVercel = typeof process !== 'undefined' && (process.env.VERCEL === '1' || !!process.env.NOW_REGION);
 
-  if (!isVercel) {
+   if (!isVercel) {
     if (process.env.NODE_ENV !== 'production') {
-      createViteServer({
-        server: { middlewareMode: true },
-        appType: 'spa',
-      }).then((vite) => {
-        app.use(vite.middlewares);
-        app.listen(PORT, '0.0.0.0', () => {
-          console.log(`\n------------------------------------------------`);
-          console.log(`Server successfully started on http://0.0.0.0:${PORT}`);
-          console.log(`Working Environment: ${process.env.NODE_ENV || 'development'}`);
-          console.log(`------------------------------------------------\n`);
+      // Use Function('return import("...")') constructor to completely bypass Vercel static analysis/NFT dependency tracing
+      const loadVite = new Function('return import("vite")');
+      loadVite().then(({ createServer: createViteServer }: any) => {
+        createViteServer({
+          server: { middlewareMode: true },
+          appType: 'spa',
+        }).then((vite: any) => {
+          app.use(vite.middlewares);
+          app.listen(PORT, '0.0.0.0', () => {
+            console.log(`\n------------------------------------------------`);
+            console.log(`Server successfully started on http://0.0.0.0:${PORT}`);
+            console.log(`Working Environment: ${process.env.NODE_ENV || 'development'}`);
+            console.log(`------------------------------------------------\n`);
+          });
+        }).catch((err: any) => {
+          console.error("Vite server initialization failed", err);
         });
-      }).catch((err) => {
-        console.error("Vite server initialization failed", err);
+      }).catch((err: any) => {
+        console.error("Failed to dynamically load Vite module:", err);
       });
     } else {
       const distPath = path.join(process.cwd(), 'dist');
