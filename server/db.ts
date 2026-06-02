@@ -70,7 +70,66 @@ export function getDb(): DbSchema {
 
   try {
     const content = fs.readFileSync(DB_FILE, 'utf-8');
-    return JSON.parse(content);
+    const db = JSON.parse(content) as DbSchema;
+    let changed = false;
+
+    // Auto-sync projects from Code/JSON files
+    if (!Array.isArray(db.projects)) {
+      db.projects = [];
+    }
+    initialProjects.forEach(ip => {
+      const idx = db.projects.findIndex(p => p.id === ip.id);
+      if (idx === -1) {
+        db.projects.push(ip);
+        changed = true;
+      } else {
+        if (JSON.stringify(db.projects[idx]) !== JSON.stringify(ip)) {
+          db.projects[idx] = { ...db.projects[idx], ...ip };
+          changed = true;
+        }
+      }
+    });
+
+    // Auto-sync work experiences
+    if (!Array.isArray(db.work)) {
+      db.work = [];
+    }
+    initialWork.forEach(iw => {
+      const idx = db.work.findIndex(w => w.id === iw.id);
+      if (idx === -1) {
+        db.work.push(iw);
+        changed = true;
+      } else {
+        if (JSON.stringify(db.work[idx]) !== JSON.stringify(iw)) {
+          db.work[idx] = { ...db.work[idx], ...iw };
+          changed = true;
+        }
+      }
+    });
+
+    // Auto-sync activities
+    if (!Array.isArray(db.activities)) {
+      db.activities = [];
+    }
+    initialActivities.forEach(ia => {
+      const idx = db.activities.findIndex(a => a.id === ia.id);
+      if (idx === -1) {
+        db.activities.push(ia);
+        changed = true;
+      } else {
+        if (JSON.stringify(db.activities[idx]) !== JSON.stringify(ia)) {
+          db.activities[idx] = { ...db.activities[idx], ...ia };
+          changed = true;
+        }
+      }
+    });
+
+    if (changed) {
+      fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf-8');
+      console.log(`DATABASE LOG: Synced hardcoded template changes into ${DB_FILE}`);
+    }
+
+    return db;
   } catch (err) {
     console.error("Error reading database file, resetting to empty schema.", err);
     return {
