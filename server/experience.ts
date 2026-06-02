@@ -2,6 +2,14 @@ import { WorkExperience } from '../src/types';
 
 export const initialWork: WorkExperience[] = [
   {
+    id: 'software-engineering-intern',
+    role: 'Software Engineering Intern',
+    company: 'Kraftlink',
+    duration: 'April 2025 — Jul 2026',
+    desc: 'Software Engineering Intern at Kraftlink, contributing to the development and improvement of an engineering operations and maintenance platform used to manage jobs, assets, workflows, and reporting systems. Working in a production development environment across both backend and frontend tasks, while gaining hands-on experience with collaborative software engineering practices, feature development, debugging, and maintaining scalable systems.',
+    category: 'Software Engineer'
+  },
+  {
     id: "tutor-eng",
     role: "Computer Science Tutor — Engineering",
     company: "University of Cape Town",
