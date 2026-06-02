@@ -73,60 +73,81 @@ export function getDb(): DbSchema {
     const db = JSON.parse(content) as DbSchema;
     let changed = false;
 
-    // Auto-sync projects from Code/JSON files
+       // Auto-sync projects from Code/JSON files while preserving the exact order of the TS file
     if (!Array.isArray(db.projects)) {
       db.projects = [];
     }
+    const syncedProjects: Project[] = [];
     initialProjects.forEach(ip => {
-      const idx = db.projects.findIndex(p => p.id === ip.id);
-      if (idx === -1) {
-        db.projects.push(ip);
-        changed = true;
+      const existing = db.projects.find(p => p.id === ip.id);
+      if (existing) {
+        syncedProjects.push({ ...existing, ...ip });
       } else {
-        if (JSON.stringify(db.projects[idx]) !== JSON.stringify(ip)) {
-          db.projects[idx] = { ...db.projects[idx], ...ip };
-          changed = true;
-        }
+        syncedProjects.push(ip);
       }
     });
+    // Append any custom database-only projects
+    db.projects.forEach(p => {
+      if (!initialProjects.some(ip => ip.id === p.id)) {
+        syncedProjects.push(p);
+      }
+    });
+    if (JSON.stringify(db.projects) !== JSON.stringify(syncedProjects)) {
+      db.projects = syncedProjects;
+      changed = true;
+    }
 
-    // Auto-sync work experiences
+    // Auto-sync work experiences while preserving the exact order of the TS file
     if (!Array.isArray(db.work)) {
       db.work = [];
     }
+    const syncedWork: WorkExperience[] = [];
     initialWork.forEach(iw => {
-      const idx = db.work.findIndex(w => w.id === iw.id);
-      if (idx === -1) {
-        db.work.push(iw);
-        changed = true;
+      const existing = db.work.find(w => w.id === iw.id);
+      if (existing) {
+        syncedWork.push({ ...existing, ...iw });
       } else {
-        if (JSON.stringify(db.work[idx]) !== JSON.stringify(iw)) {
-          db.work[idx] = { ...db.work[idx], ...iw };
-          changed = true;
-        }
+        syncedWork.push(iw);
       }
     });
+    // Append any custom database-only work experiences
+    db.work.forEach(w => {
+      if (!initialWork.some(iw => iw.id === w.id)) {
+        syncedWork.push(w);
+      }
+    });
+    if (JSON.stringify(db.work) !== JSON.stringify(syncedWork)) {
+      db.work = syncedWork;
+      changed = true;
+    }
 
-    // Auto-sync activities
+    // Auto-sync activities while preserving the exact order of the TS file
     if (!Array.isArray(db.activities)) {
       db.activities = [];
     }
+    const syncedActivities: Activity[] = [];
     initialActivities.forEach(ia => {
-      const idx = db.activities.findIndex(a => a.id === ia.id);
-      if (idx === -1) {
-        db.activities.push(ia);
-        changed = true;
+      const existing = db.activities.find(a => a.id === ia.id);
+      if (existing) {
+        syncedActivities.push({ ...existing, ...ia });
       } else {
-        if (JSON.stringify(db.activities[idx]) !== JSON.stringify(ia)) {
-          db.activities[idx] = { ...db.activities[idx], ...ia };
-          changed = true;
-        }
+        syncedActivities.push(ia);
       }
     });
+    // Append any custom database-only activities
+    db.activities.forEach(a => {
+      if (!initialActivities.some(ia => ia.id === a.id)) {
+        syncedActivities.push(a);
+      }
+    });
+    if (JSON.stringify(db.activities) !== JSON.stringify(syncedActivities)) {
+      db.activities = syncedActivities;
+      changed = true;
+    }
 
     if (changed) {
       fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf-8');
-      console.log(`DATABASE LOG: Synced hardcoded template changes into ${DB_FILE}`);
+      console.log(`DATABASE LOG: Synced and reordered hardcoded template changes into ${DB_FILE}`);
     }
 
     return db;
