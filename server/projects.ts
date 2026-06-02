@@ -14,6 +14,30 @@ export const initialProjects: Project[] = [
     shade: "academic"
   },
   {
+    id: 'fnb-dataquest-2026-credit-risk-workstation',
+    title: 'FNB DataQuest 2026 – Credit Risk Workstation',
+    category: 'hackathon',
+    date: 'May 2026 - May 2026',
+    badge: 'FNB DataQuest 2026',
+ desc: 'Developed an interactive credit risk analytics platform for retail lending, leveraging Logistic Regression, WoE, and IV methodologies to produce transparent and Basel III-compliant credit scorecards. Features include exploratory data analysis, data quality monitoring, model performance evaluation (AUC, Gini, ROC), scorecard generation, and business-facing tools for threshold tuning and portfolio risk simulation.',
+    tags: ['Statistics', 'Data Science', 'Typescript', 'Credit Analysis'],
+    contributors: [
+      { name: 'Moegamat Samsodien', link: 'https://linkedin.com/in/moegamatsamsodien' },
+      {
+        name: 'Entisaar Elfadl',
+        link: 'https://www.linkedin.com/in/entisaar-elfadl-400744351/'
+      },
+      {
+        name: 'Misha Dick',
+        link: 'https://www.linkedin.com/in/misha-d-jacobs-3bb754321/'
+      }
+    ],
+    links: [
+      { label: 'Website', url: 'https://fnb-data-quest2026.vercel.app/' }
+    ],
+    shade: 'academic'
+  },
+  {
     id: 'tournament-os',
     title: 'Tournament OS',
     category: 'side',
