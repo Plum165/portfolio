@@ -10,6 +10,14 @@ export const initialActivities: Activity[] = [
     desc: "Overseeing all archery equipment and storage operations for the UCT Archery Club. Responsibilities include maintaining gear, coordinating budgets and orders with the treasurer, and ensuring equipment readiness for practices and competitions."
   },
   {
+    id: 'resident-tutor-harpers-residence',
+    title: 'Resident Tutor | Harper’s Residence',
+    category: 'volunteer',
+    date: 'May 2026 - Oct 2026',
+    badge: 'Tutoring',
+    desc: 'Provide academic support and mentorship to university students within the residence environment, with a focus on third-year Computer Science and second-year Statistics courses. Assist students with understanding complex concepts, problem-solving approaches, and effective study strategies while fostering a collaborative and supportive learning environment. Strengthened communication, leadership, and interpersonal skills through one-on-one guidance and group academic support sessions.'
+  },
+  {
     id: "chess-competitive",
     title: "Competitive Chess",
     category: "sport",
