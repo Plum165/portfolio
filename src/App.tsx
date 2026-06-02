@@ -29,7 +29,7 @@ const activityCategoryTexts = {
 
 export default function App() {
   // Theme & Typography States
-  const [currentTheme, setCurrentTheme] = useState('elegant-dark');
+  const [currentTheme, setCurrentTheme] = useState('ocean-depth');
   const [currentFont, setCurrentFont] = useState('Inter');
 
   // Interactive Filter States

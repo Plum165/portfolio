@@ -1,7 +1,7 @@
 import { Theme } from '../types';
 
 export const THEMES: Theme[] = [
-  { id: 'elegant-dark', label: 'Elegant Dark (Default)', c1: '#2563eb', c2: '#1d4ed8' },
+  { id: 'elegant-dark', label: 'Elegant Dark', c1: '#2563eb', c2: '#1d4ed8' },
   { id: 'spiderman', label: 'Spiderman', c1: '#e30022', c2: '#002d62' },
   { id: 'blood', label: 'Blood', c1: '#840000', c2: '#0d0d0d' },
   { id: 'sapphire', label: 'Sapphire & Steel', c1: '#0f52ba', c2: '#4682b4' },
