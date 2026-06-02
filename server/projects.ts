@@ -110,7 +110,7 @@ export const initialProjects: Project[] = [
     tags: ["JavaScript", "HTML", "CSS", "JSON", "Gamification"],
     contributors: [
       { name: "Moegamat Samsodien", link: "https://linkedin.com/in/moegamatsamsodien" },
-      { name: "Misha Dick", link: "#" },
+      { name: "Misha Dick", link: "https://www.linkedin.com/in/misha-d-jacobs-3bb754321/" },
       { name: "Entisaar Elfadl", link: "https://www.linkedin.com/in/entisaar-elfadl-400744351/" }
     ],
     links: [
@@ -172,7 +172,7 @@ export const initialProjects: Project[] = [
     contributors: [
       { name: "Moegamat Samsodien", link: "https://linkedin.com/in/moegamatsamsodien" },
       { name: "Entisaar Elfadl", link: "https://www.linkedin.com/in/entisaar-elfadl-400744351/" },
-      { name: "Misha Jacobs", link: "#" }
+      { name: "Misha Jacobs", link: "https://www.linkedin.com/in/misha-d-jacobs-3bb754321/" }
     ],
     links: [{ label: "Source", url: "https://github.com/Plum165/mega-zoo-planner" }],
     shade: "hackathon"
