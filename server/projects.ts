@@ -5,13 +5,25 @@ export const initialProjects: Project[] = [
     id: "sta3022f-notes",
     title: "STA3022F — Advanced Statistics Study Notes",
     category: "academic",
-    date: "Feb 2026 - Present",
+    date: "Feb 2026 - May 2026",
     badge: "Academic",
     desc: "A growing collection of detailed study notes for STA3022F aimed at improving conceptual understanding and exam preparation. The notes break down complex statistical concepts into structured explanations and examples to support independent study.",
     tags: ["Statistics", "Technical Writing", "Academic Notes"],
     contributors: [{ name: "Moegamat Samsodien", link: "https://linkedin.com/in/moegamatsamsodien" }],
     links: [{ label: "Website", url: "https://practical-fawn.vercel.app/" }],
     shade: "academic"
+  },
+  {
+    id: 'tournament-os',
+    title: 'Tournament OS',
+    category: 'side',
+    date: 'April 2026 - May 2026',
+    badge: 'Sport Organizer',
+    desc: 'A web-based tournament management platform designed to simplify scoring, rankings, and administrative tasks for sports competitions such as archery, basketball, and other competitive events. The platform helps organisers manage tournaments more efficiently through automated scoring and structured competition workflows, while also providing users with educational content about different sports, including their rules, background, and history.',
+    tags: ["HTML", "JavaScript"],
+    contributors: [{ name: 'Moegamat Samsodien', link: 'https://linkedin.com/in/moegamatsamsodien' }],
+    links: [{ label: 'Website', url: 'https://tournament-os.vercel.app/index.html' }],
+    shade: 'side'
   },
   {
     id: "toa-notes",
