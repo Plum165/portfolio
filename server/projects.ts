@@ -2,6 +2,22 @@ import { Project } from '../src/types';
 
 export const initialProjects: Project[] = [
   {
+    id: 'sta2030s-statistical-theory-calculator',
+    title: 'STA2030S — Statistical Theory Calculator',
+    category: 'academic',
+    date: 'December 2025 - June 2026',
+    badge: 'Academic',
+    desc: 'Statistical Theory Calculator is an interactive educational platform for probability, distributions, and statistical theory, featuring step-by-step solutions, proofs, and visual learning tools. It includes modules for probability distributions, PDF analysis, MGFs, random variable transformations, and bivariate statistics, all powered by client-side mathematical computation. Built with a modern themed interface and no external API dependencies, it provides a comprehensive environment for learning and exploring statistical concepts.',
+    tags: ['Statistics', 'Technical Writing', 'Academic Notes'],
+    contributors: [
+      { name: 'Moegamat Samsodien', link: 'https://linkedin.com/in/moegamatsamsodien' }
+    ],
+    links: [
+      { label: 'Website', url: 'https://sta2030notes.vercel.app/' }
+    ],
+    shade: 'academic'
+  },
+  {
     id: "sta3022f-notes",
     title: "STA3022F — Advanced Statistics Study Notes",
     category: "academic",
@@ -10,7 +26,7 @@ export const initialProjects: Project[] = [
     desc: "A growing collection of detailed study notes for STA3022F aimed at improving conceptual understanding and exam preparation. The notes break down complex statistical concepts into structured explanations and examples to support independent study.",
     tags: ["Statistics", "Technical Writing", "Academic Notes"],
     contributors: [{ name: "Moegamat Samsodien", link: "https://linkedin.com/in/moegamatsamsodien" }],
-    links: [{ label: "Website", url: "https://practical-fawn.vercel.app/" }],
+    links: [{ label: "Website", url: "https://sta3022fnotes.vercel.app/" }],
     shade: "academic"
   },
   {
