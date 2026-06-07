@@ -335,6 +335,27 @@ export const initialProjects: Project[] = [
     shade: "coursework"
   },
   {
+    id: 'cpu-scheduling-calculator',
+    title: 'CPU Scheduling Calculator',
+    category: 'academic',
+    date: 'May 2025',
+    badge: 'Academic',
+    desc: 'An interactive educational platform and simulator for CPU scheduling algorithms, developed for the CSC3002F Operating Systems course. Features animated Gantt charts, worked solutions, and practice labs.',
+    tags: [
+      'Academic Notes',
+      'Computer Science',
+      'Scheduling Calculator',
+      'Typescript'
+    ],
+    contributors: [
+      { name: 'Moegamat Samsodien', link: 'https://linkedin.com/in/moegamatsamsodien' }
+    ],
+    links: [
+      { label: 'Website', url: 'https://cpu-scheduler-phi.vercel.app/' }
+    ],
+    shade: 'academic'
+  },
+  {
     id: "java-gym-sim",
     title: "Java Gym Simulation with Time Tracking",
     category: "coursework",
