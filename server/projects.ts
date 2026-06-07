@@ -53,17 +53,18 @@ export const initialProjects: Project[] = [
     ],
     shade: 'academic'
   },
+  
   {
-    id: 'tournament-os',
-    title: 'Tournament OS',
-    category: 'side',
+    id: 'os-memory-management-simulator',
+    title: 'OS Memory Management Simulator',
+    category: 'academic',
     date: 'April 2026 - May 2026',
-    badge: 'Sport Organizer',
-    desc: 'A web-based tournament management platform designed to simplify scoring, rankings, and administrative tasks for sports competitions such as archery, basketball, and other competitive events. The platform helps organisers manage tournaments more efficiently through automated scoring and structured competition workflows, while also providing users with educational content about different sports, including their rules, background, and history.',
-    tags: ["HTML", "JavaScript"],
+    badge: 'Academic',
+    desc: 'This project is an interactive educational suite and developer sandbox designed to help students master Virtual Memory Page Replacement Algorithms and prepare for operating systems coursework.',
+    tags: ["CSC3002F","Upgraded", "TypeScript"],
     contributors: [{ name: 'Moegamat Samsodien', link: 'https://linkedin.com/in/moegamatsamsodien' }],
-    links: [{ label: 'Website', url: 'https://tournament-os.vercel.app/index.html' }],
-    shade: 'side'
+    links: [{ label: 'Website', url: 'https://page-algorithm.vercel.app/' }],
+    shade: 'academic'
   },
   {
     id: "toa-notes",
