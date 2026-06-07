@@ -332,7 +332,7 @@ export const initialProjects: Project[] = [
     desc: "Deadlock avoidance simulation using Banker's Algorithm with a step-by-step explanation mode.",
     tags: ["Java", "OS", "Simulation"],
     contributors: [{ name: "Moegamat Samsodien", link: "https://linkedin.com/in/moegamatsamsodien" }],
-    links: [{ label: "Source", url: "https://github.com/Plum165/BankerAlgo" }],
+    links: [{ label: "Website", url: "https://banker-algo-five.vercel.app/" }],
     shade: "coursework"
   },
   {
