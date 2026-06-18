@@ -2,20 +2,36 @@ import { Project } from '../src/types';
 
 export const initialProjects: Project[] = [
   {
-    id: 'sta2030s-statistical-theory-calculator',
-    title: 'STA2030S — Statistical Theory Calculator',
+    id: 'sta2020-statistical-theory-calculator',
+    title: 'STA2020 — Statistical Theory Calculator',
     category: 'academic',
     date: 'December 2025 - June 2026',
     badge: 'Academic',
-    desc: 'Statistical Theory Calculator is an interactive educational platform for probability, distributions, and statistical theory, featuring step-by-step solutions, proofs, and visual learning tools. It includes modules for probability distributions, PDF analysis, MGFs, random variable transformations, and bivariate statistics, all powered by client-side mathematical computation. Built with a modern themed interface and no external API dependencies, it provides a comprehensive environment for learning and exploring statistical concepts.',
+    desc: 'A fully reactive and comprehensive statistical theory laboratory(STA2020) engineered for student reference, curriculum exploration, and interactive mathematical modeling.',
     tags: ['Statistics', 'Technical Writing', 'Academic Notes'],
     contributors: [
       { name: 'Moegamat Samsodien', link: 'https://linkedin.com/in/moegamatsamsodien' }
     ],
     links: [
-      { label: 'Website', url: 'https://sta2030notes.vercel.app/' }
+      { label: 'Website', url: 'https://sta2020notes.vercel.app/' }
     ],
     shade: 'academic'
+  },
+  {
+    id: 'network-graph-visualizer',
+    title: 'Network-Graph-Visualizer',
+    category: 'side',
+    date: 'June 2026 - June 2026',
+    badge: 'Academic',
+    desc: 'A web-based tool for visualizing and analyzing network graphs and their properties, designed for educational and research purposes.',
+    tags: ['Computer Science', 'Data Visualization', 'Academic Notes'],
+    contributors: [
+      { name: 'Moegamat Samsodien', link: 'https://linkedin.com/in/moegamatsamsodien' }
+    ],
+    links: [
+      { label: 'Website', url: 'https://network-graph-visualizer.vercel.app/' }
+    ],
+    shade: 'side'
   },
   {
     id: "sta3022f-notes",
