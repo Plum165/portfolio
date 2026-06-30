@@ -1,20 +1,53 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Moegamat Samsodien — Portfolio
 
-# Run and deploy your AI Studio app
+A full-stack personal portfolio website with built-in user authentication, an admin-managed content system (projects, work experience, activities), and a guestbook/message board.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/6c22386a-a792-450b-af18-14b6c95d107f
+- **Project showcase** — browse academic and personal projects, filterable by theme/category
+- **Work experience & activities** — sections for professional experience and extracurricular activities
+- **Admin dashboard** (`/admin`) — add, edit, and delete projects, work entries, and activities
+- **Authentication** — register/login with JWT-based sessions
+- **Guestbook** — authenticated visitors can leave messages
+- **Gemini-powered features** — uses the Google Gemini API (`@google/genai`) for AI-assisted functionality
 
-## Run Locally
+## Tech Stack
 
-**Prerequisites:**  Node.js
+- **Frontend**: React 19, TypeScript, Vite, Tailwind CSS, Framer Motion, lucide-react
+- **Backend**: Express.js (Node.js), running as a local server in development and as Vercel serverless functions in production
+- **Database**: JSON-file-based store (`db.json`)
+- **Deployment**: Vercel
 
+See [ARCHITECTURE.md](ARCHITECTURE.md) for a detailed breakdown of the folder structure, API routes, and how to extend the app with new data categories.
+
+## Getting Started
+
+**Prerequisites:** Node.js
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+   ```bash
+   npm install
+   ```
+2. Copy `.env.example` to `.env.local` and set your `GEMINI_API_KEY` (get one from [Google AI Studio](https://aistudio.google.com/)):
+   ```bash
+   cp .env.example .env.local
+   ```
+3. Start the dev server:
+   ```bash
+   npm run dev
+   ```
+   This runs the Express API on `http://localhost:3000` with the Vite dev server for the frontend.
+
+## Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the local development server |
+| `npm run build` | Build the frontend for production |
+| `npm run start` | Run the production server from `dist/` |
+| `npm run lint` | Type-check the project with `tsc` |
+| `npm run clean` | Remove the `dist/` build output |
+
+## Deployment
+
+The app is deployed on Vercel: `vercel.json` rewrites `/api/*` requests to the serverless handler in `api/index.ts` and serves the admin dashboard at `/admin`. See the [deployment checklist](ARCHITECTURE.md#deployment-checklist) in `ARCHITECTURE.md` before pushing changes that add new data types or routes.
